@@ -7,4 +7,4 @@ Submissions open from January 18th 2024 at 8:00 AM to February 1st 2024 at 8:00 
 
 ## Ideas
 
-see (the GameIdeas folder)[./GameIdeas] for game ideas
+see [the GameIdeas folder](./GameIdeas) for game ideas
