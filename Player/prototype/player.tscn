@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgbvq30dwao15"]
+
+[ext_resource type="Script" path="res://Player/prototype/player.cs" id="1_jh6u7"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_hlv8o"]
+specular_color = Color(0.168627, 0.219608, 0.823529, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7l2bc"]
+size = Vector2(20, 65.0651)
+
+[sub_resource type="Gradient" id="Gradient_w82se"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nij73"]
+gradient = SubResource("Gradient_w82se")
+width = 4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8reqi"]
+size = Vector2(21.0924, 5.4873)
+
+[node name="Node2D" type="CharacterBody2D"]
+scale = Vector2(2.88487, 2.05212)
+script = ExtResource("1_jh6u7")
+
+[node name="Torsoe" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Torsoe"]
+position = Vector2(0.173318, -22.4159)
+scale = Vector2(19.065, 65.2984)
+texture = SubResource("CanvasTexture_hlv8o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Torsoe"]
+position = Vector2(0, -22.5325)
+shape = SubResource("RectangleShape2D_7l2bc")
+
+[node name="LeftArm" type="Node2D" parent="."]
+position = Vector2(-41.943, -47.7556)
+scale = Vector2(3.344, -1.14755)
+
+[node name="LeftArmUpper" type="RigidBody2D" parent="LeftArm"]
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftArm/LeftArmUpper"]
+scale = Vector2(5.278, 1.374)
+texture = SubResource("GradientTexture1D_nij73")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArm/LeftArmUpper"]
+shape = SubResource("RectangleShape2D_8reqi")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(-8.31928, -47.7556)
+node_a = NodePath("../Torsoe")
+node_b = NodePath("../LeftArm/LeftArmUpper")
+disable_collision = false
