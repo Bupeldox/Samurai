@@ -9,6 +9,8 @@ public partial class player : Node2D
 	private RigidBody2D LeftLeg;
 	private RigidBody2D RightLeg;
 
+	private float force = 200;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -23,19 +25,19 @@ public partial class player : Node2D
 	{
 		if(Input.IsActionPressed("Q"))
 		{
-			ApplyForceToLimb(LeftArm, 50);
+			ApplyForceToLimb(LeftArm, force);
 		}
 		else if(Input.IsActionPressed("E"))
 		{
-			ApplyForceToLimb(RightArm, 50);
+			ApplyForceToLimb(RightArm, force);
 		}
 		else if(Input.IsActionPressed("W"))
 		{
-			ApplyForceToLimb(LeftLeg, 50);
+			ApplyForceToLimb(LeftLeg, force);
 		}
 		else if(Input.IsActionPressed("R"))
 		{
-			ApplyForceToLimb(RightLeg, 50);
+			ApplyForceToLimb(RightLeg, force);
 		}
 	}
 
