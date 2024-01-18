@@ -8,7 +8,8 @@
 position = Vector2(575, 323)
 
 [node name="Node2D" parent="." instance=ExtResource("1_1h5w3")]
-position = Vector2(563, 257)
+position = Vector2(567, 308)
+scale = Vector2(1.319, 1.256)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 509.0

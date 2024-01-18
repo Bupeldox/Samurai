@@ -1,24 +1,22 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgbvq30dwao15"]
+[gd_scene load_steps=18 format=3 uid="uid://dgbvq30dwao15"]
 
 [ext_resource type="Script" path="res://Player/prototype/player.cs" id="1_jh6u7"]
+[ext_resource type="Texture2D" uid="uid://c00dfi4qsy8n3" path="res://Player/prototype/Images/LeftLowerArm.png" id="2_6mu66"]
+[ext_resource type="Texture2D" uid="uid://coci3tpb6bfs4" path="res://Player/prototype/Images/upperleftarm.png" id="2_ebyxt"]
+[ext_resource type="Texture2D" uid="uid://dljq8x7fc4i8t" path="res://Player/prototype/Images/head.png" id="2_ne3hm"]
+[ext_resource type="Texture2D" uid="uid://cqvol8sini22g" path="res://Player/prototype/Images/body.png" id="2_nmkv0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpcoe"]
+size = Vector2(51.2792, 80.7881)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vw7p8"]
 size = Vector2(58, 185)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_cbmnj"]
-specular_color = Color(0, 0, 1, 1)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xgnpc"]
 size = Vector2(80.8142, 20)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_8u8ff"]
-specular_color = Color(1, 0, 1, 1)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7lf4"]
 size = Vector2(51.2792, 20)
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_tbpb3"]
-specular_color = Color(0, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opw65"]
 size = Vector2(80.8142, 20)
@@ -48,16 +46,30 @@ specular_color = Color(0, 1, 1, 1)
 scale = Vector2(0.819045, 0.779817)
 script = ExtResource("1_jh6u7")
 
+[node name="Head" type="StaticBody2D" parent="."]
+position = Vector2(0, -106.435)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+position = Vector2(-1.22093, -26.2882)
+shape = SubResource("RectangleShape2D_jpcoe")
+
+[node name="Sprite2D" type="Sprite2D" parent="Head/CollisionShape2D"]
+z_index = 6
+position = Vector2(1.22093, -7.05293)
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("2_ne3hm")
+
 [node name="Body" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
-position = Vector2(0, -1)
+position = Vector2(0, -1.28235)
 shape = SubResource("RectangleShape2D_vw7p8")
 
 [node name="Torsoe" type="Sprite2D" parent="Body/CollisionShape2D"]
-position = Vector2(0, 1)
-scale = Vector2(56.5557, 171.166)
-texture = SubResource("CanvasTexture_cbmnj")
+z_index = 5
+position = Vector2(-3.6628, 20.5176)
+scale = Vector2(0.435, 0.435)
+texture = ExtResource("2_nmkv0")
 
 [node name="UpperArmLeft" type="RigidBody2D" parent="."]
 position = Vector2(-48.8374, -71.8117)
@@ -70,13 +82,15 @@ disable_collision = false
 softness = 1.11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpperArmLeft"]
+z_index = 1
 position = Vector2(-30.4071, 0)
 shape = SubResource("RectangleShape2D_xgnpc")
 
 [node name="Sprite2D" type="Sprite2D" parent="UpperArmLeft/CollisionShape2D"]
-position = Vector2(-0.116266, 0)
-scale = Vector2(80.5816, 18.9469)
-texture = SubResource("CanvasTexture_8u8ff")
+position = Vector2(1.10467, 7.27177e-06)
+rotation = -0.0328088
+scale = Vector2(0.111577, 0.0718717)
+texture = ExtResource("2_ebyxt")
 
 [node name="LowerArmLeft" type="RigidBody2D" parent="UpperArmLeft"]
 position = Vector2(-101.338, 4.89178e-06)
@@ -85,15 +99,17 @@ position = Vector2(-101.338, 4.89178e-06)
 position = Vector2(17.0931, 0)
 node_a = NodePath("../..")
 node_b = NodePath("..")
-angular_limit_lower = -0.698132
-angular_limit_upper = 0.698132
+angular_limit_lower = -3.14159
+angular_limit_upper = 3.14159
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpperArmLeft/LowerArmLeft"]
 shape = SubResource("RectangleShape2D_x7lf4")
 
 [node name="Sprite2D" type="Sprite2D" parent="UpperArmLeft/LowerArmLeft/CollisionShape2D"]
-scale = Vector2(50.2306, 18.4571)
-texture = SubResource("CanvasTexture_tbpb3")
+z_index = 8
+position = Vector2(-25.6396, -2.03076e-06)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_6mu66")
 
 [node name="UpperArmRight" type="RigidBody2D" parent="."]
 position = Vector2(47.6164, -73.094)
@@ -111,9 +127,10 @@ position = Vector2(-30.4071, 0)
 shape = SubResource("RectangleShape2D_xgnpc")
 
 [node name="Sprite2D" type="Sprite2D" parent="UpperArmRight/CollisionShape2D"]
-position = Vector2(-0.116266, 0)
-scale = Vector2(80.5816, 18.9469)
-texture = SubResource("CanvasTexture_8u8ff")
+position = Vector2(2.71739, -0.183758)
+rotation = -3.10822
+scale = Vector2(-0.107734, 0.0736433)
+texture = ExtResource("2_ebyxt")
 
 [node name="LowerArmRight" type="RigidBody2D" parent="UpperArmRight"]
 position = Vector2(-101.338, 4.89178e-06)
@@ -129,8 +146,9 @@ angular_limit_upper = 0.698132
 shape = SubResource("RectangleShape2D_x7lf4")
 
 [node name="Sprite2D" type="Sprite2D" parent="UpperArmRight/LowerArmRight/CollisionShape2D"]
-scale = Vector2(50.2306, 18.4571)
-texture = SubResource("CanvasTexture_tbpb3")
+position = Vector2(-25.6396, 0.0404205)
+scale = Vector2(0.1, -0.1)
+texture = ExtResource("2_6mu66")
 
 [node name="UpperLegLeft" type="RigidBody2D" parent="."]
 position = Vector2(-42.7327, 75.6587)
