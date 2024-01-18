@@ -30,10 +30,5 @@ JW I think it will be good to have fast and slow paced sections to break it up. 
 
 # MVP (to be agreed on)
 
-One 'level' which gives the player a reason to control the character
-Character Limb Controls (Moving whole character isn't mvp?)
-No Rectangles(non-textured elements)
-
-
 
 
