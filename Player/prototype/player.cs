@@ -1,44 +1,31 @@
 using Godot;
 using System;
 
-public partial class player : CharacterBody2D
+public partial class player : Node2D
 {
-	public const float Speed = 300.0f;
-	public const float JumpVelocity = -400.0f;
 
-	// Get the gravity from the project settings to be synced with RigidBody nodes.
-	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-
-    public override void _Draw()
-    {
-        GD.Print("Hello");
-    }
-
-    public override void _PhysicsProcess(double delta)
+	private RigidBody2D LeftArm;
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
 	{
-		Vector2 velocity = Velocity;
+		LeftArm = GetNode<RigidBody2D>("UpperArm/LowerArm");
+	}
 
-		// Add the gravity.
-		if (!IsOnFloor())
-			//velocity.Y += gravity * (float)delta;
-
-		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-			velocity.Y = JumpVelocity;
-
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if (direction != Vector2.Zero)
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+		if(Input.IsActionPressed("Q"))
 		{
-			velocity.X = direction.X * Speed;
+			ApplyForceToLimb(LeftArm, 50);
 		}
-		else
-		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-		}
+	}
 
-		Velocity = velocity;
-		MoveAndSlide();
+	public void ApplyForceToLimb(RigidBody2D limb, float force)
+	{
+		// Get location of cursor
+		Vector2 cursorPos = GetGlobalMousePosition();
+
+		// Apply force to limb towards cursor
+		limb.ApplyCentralImpulse((cursorPos - limb.GlobalPosition).Normalized() * force);
 	}
 }
