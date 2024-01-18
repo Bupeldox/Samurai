@@ -1,11 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bms0ivq5rguiv"]
+[gd_scene load_steps=2 format=3 uid="uid://bms0ivq5rguiv"]
 
 [ext_resource type="PackedScene" uid="uid://dgbvq30dwao15" path="res://Player/prototype/player.tscn" id="1_1h5w3"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2fidg"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_msfju"]
-size = Vector2(1205, 37)
 
 [node name="Node2D" type="Node2D"]
 
@@ -14,17 +9,6 @@ position = Vector2(575, 323)
 
 [node name="Node2D" parent="." instance=ExtResource("1_1h5w3")]
 position = Vector2(563, 257)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-modulate = Color(0.0666667, 1, 0, 1)
-self_modulate = Color(1, 0.0196078, 0.0705882, 1)
-top_level = true
-material = SubResource("CanvasItemMaterial_2fidg")
-position = Vector2(-4, 62)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(577, 302)
-shape = SubResource("RectangleShape2D_msfju")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 509.0

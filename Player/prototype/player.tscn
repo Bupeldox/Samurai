@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgbvq30dwao15"]
+[gd_scene load_steps=16 format=3 uid="uid://dgbvq30dwao15"]
 
 [ext_resource type="Script" path="res://Player/prototype/player.cs" id="1_jh6u7"]
 
@@ -20,6 +20,30 @@ size = Vector2(51.2792, 20)
 [sub_resource type="CanvasTexture" id="CanvasTexture_tbpb3"]
 specular_color = Color(0, 1, 1, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opw65"]
+size = Vector2(80.8142, 20)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_p02e0"]
+specular_color = Color(1, 0, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7e8rr"]
+size = Vector2(74.477, 20)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7mnke"]
+specular_color = Color(0, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7qkl"]
+size = Vector2(80.8142, 20)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_x6rb7"]
+specular_color = Color(1, 0, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpp6t"]
+size = Vector2(74.477, 20)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_g6qff"]
+specular_color = Color(0, 1, 1, 1)
+
 [node name="Player" type="Node2D"]
 scale = Vector2(0.819045, 0.779817)
 script = ExtResource("1_jh6u7")
@@ -35,38 +59,151 @@ position = Vector2(0, 1)
 scale = Vector2(56.5557, 171.166)
 texture = SubResource("CanvasTexture_cbmnj")
 
-[node name="UpperArm" type="RigidBody2D" parent="."]
+[node name="UpperArmLeft" type="RigidBody2D" parent="."]
 position = Vector2(-48.8374, -71.8117)
 
-[node name="PinJoint2D" type="PinJoint2D" parent="UpperArm"]
+[node name="PinJoint2D" type="PinJoint2D" parent="UpperArmLeft"]
 position = Vector2(1.90735e-06, 0)
 node_a = NodePath("../../Body")
 node_b = NodePath("..")
 disable_collision = false
 softness = 1.11
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperArm"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperArmLeft"]
 position = Vector2(-30.4071, 0)
 shape = SubResource("RectangleShape2D_xgnpc")
 
-[node name="Sprite2D" type="Sprite2D" parent="UpperArm/CollisionShape2D"]
+[node name="Sprite2D" type="Sprite2D" parent="UpperArmLeft/CollisionShape2D"]
 position = Vector2(-0.116266, 0)
 scale = Vector2(80.5816, 18.9469)
 texture = SubResource("CanvasTexture_8u8ff")
 
-[node name="LowerArm" type="RigidBody2D" parent="UpperArm"]
+[node name="LowerArmLeft" type="RigidBody2D" parent="UpperArmLeft"]
 position = Vector2(-101.338, 4.89178e-06)
 
-[node name="PinJoint2D" type="PinJoint2D" parent="UpperArm/LowerArm"]
+[node name="PinJoint2D" type="PinJoint2D" parent="UpperArmLeft/LowerArmLeft"]
 position = Vector2(17.0931, 0)
 node_a = NodePath("../..")
 node_b = NodePath("..")
 angular_limit_lower = -0.698132
 angular_limit_upper = 0.698132
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperArm/LowerArm"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperArmLeft/LowerArmLeft"]
 shape = SubResource("RectangleShape2D_x7lf4")
 
-[node name="Sprite2D" type="Sprite2D" parent="UpperArm/LowerArm/CollisionShape2D"]
+[node name="Sprite2D" type="Sprite2D" parent="UpperArmLeft/LowerArmLeft/CollisionShape2D"]
 scale = Vector2(50.2306, 18.4571)
 texture = SubResource("CanvasTexture_tbpb3")
+
+[node name="UpperArmRight" type="RigidBody2D" parent="."]
+position = Vector2(47.6164, -73.094)
+rotation = -3.14127
+
+[node name="PinJoint2D" type="PinJoint2D" parent="UpperArmRight"]
+position = Vector2(1.90735e-06, 0)
+node_a = NodePath("../../Body")
+node_b = NodePath("..")
+disable_collision = false
+softness = 1.11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperArmRight"]
+position = Vector2(-30.4071, 0)
+shape = SubResource("RectangleShape2D_xgnpc")
+
+[node name="Sprite2D" type="Sprite2D" parent="UpperArmRight/CollisionShape2D"]
+position = Vector2(-0.116266, 0)
+scale = Vector2(80.5816, 18.9469)
+texture = SubResource("CanvasTexture_8u8ff")
+
+[node name="LowerArmRight" type="RigidBody2D" parent="UpperArmRight"]
+position = Vector2(-101.338, 4.89178e-06)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="UpperArmRight/LowerArmRight"]
+position = Vector2(17.0931, 0)
+node_a = NodePath("../..")
+node_b = NodePath("..")
+angular_limit_lower = -0.698132
+angular_limit_upper = 0.698132
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperArmRight/LowerArmRight"]
+shape = SubResource("RectangleShape2D_x7lf4")
+
+[node name="Sprite2D" type="Sprite2D" parent="UpperArmRight/LowerArmRight/CollisionShape2D"]
+scale = Vector2(50.2306, 18.4571)
+texture = SubResource("CanvasTexture_tbpb3")
+
+[node name="UpperLegLeft" type="RigidBody2D" parent="."]
+position = Vector2(-42.7327, 75.6587)
+rotation = -1.53914
+
+[node name="PinJoint2D" type="PinJoint2D" parent="UpperLegLeft"]
+position = Vector2(1.90735e-06, 0)
+node_a = NodePath("../../Body")
+node_b = NodePath("..")
+disable_collision = false
+softness = 1.11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperLegLeft"]
+position = Vector2(-30.4071, 0)
+shape = SubResource("RectangleShape2D_opw65")
+
+[node name="Sprite2D" type="Sprite2D" parent="UpperLegLeft/CollisionShape2D"]
+position = Vector2(-0.116266, 0)
+scale = Vector2(80.5816, 18.9469)
+texture = SubResource("CanvasTexture_p02e0")
+
+[node name="LowerLegLeft" type="RigidBody2D" parent="UpperLegLeft"]
+position = Vector2(-101.338, 4.89178e-06)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="UpperLegLeft/LowerLegLeft"]
+position = Vector2(17.0931, 0)
+node_a = NodePath("../..")
+node_b = NodePath("..")
+angular_limit_lower = -0.698132
+angular_limit_upper = 0.698132
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperLegLeft/LowerLegLeft"]
+position = Vector2(-11.5989, 0)
+shape = SubResource("RectangleShape2D_7e8rr")
+
+[node name="Sprite2D" type="Sprite2D" parent="UpperLegLeft/LowerLegLeft/CollisionShape2D"]
+scale = Vector2(74.477, 18.4571)
+texture = SubResource("CanvasTexture_7mnke")
+
+[node name="UpperLegRight" type="RigidBody2D" parent="."]
+position = Vector2(43.9536, 73.094)
+rotation = -1.70064
+
+[node name="PinJoint2D" type="PinJoint2D" parent="UpperLegRight"]
+position = Vector2(1.90735e-06, 0)
+node_a = NodePath("../../Body")
+node_b = NodePath("..")
+disable_collision = false
+softness = 1.11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperLegRight"]
+position = Vector2(-30.4071, 0)
+shape = SubResource("RectangleShape2D_a7qkl")
+
+[node name="Sprite2D" type="Sprite2D" parent="UpperLegRight/CollisionShape2D"]
+position = Vector2(-0.116266, 0)
+scale = Vector2(80.5816, 18.9469)
+texture = SubResource("CanvasTexture_x6rb7")
+
+[node name="LowerLegRight" type="RigidBody2D" parent="UpperLegRight"]
+position = Vector2(-101.338, 4.89178e-06)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="UpperLegRight/LowerLegRight"]
+position = Vector2(17.0931, 0)
+node_a = NodePath("../..")
+node_b = NodePath("..")
+angular_limit_lower = -0.698132
+angular_limit_upper = 0.698132
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperLegRight/LowerLegRight"]
+position = Vector2(-11.5989, 0)
+shape = SubResource("RectangleShape2D_jpp6t")
+
+[node name="Sprite2D" type="Sprite2D" parent="UpperLegRight/LowerLegRight/CollisionShape2D"]
+scale = Vector2(74.477, 18.4571)
+texture = SubResource("CanvasTexture_g6qff")
