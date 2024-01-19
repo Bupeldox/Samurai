@@ -12,56 +12,52 @@ scale = Vector2(0.601774, 1.2447)
 texture = ExtResource("1_8fdlm")
 
 [node name="Arms" type="Node2D" parent="."]
-position = Vector2(12, -18)
 
-[node name="LeftArm" parent="Arms" node_paths=PackedStringArray("targetNode", "shoulderMinNode") instance=ExtResource("1_4g8bk")]
-position = Vector2(-17, 6)
-reverseKnee = true
-targetNode = NodePath("../../Targets/TargetLeftArm")
+[node name="LeftArm" parent="Arms" node_paths=PackedStringArray("toNode", "shoulderMinNode") instance=ExtResource("1_4g8bk")]
+position = Vector2(-31, 13)
+isKneeReversed = true
+toNode = NodePath("TargetLeftArm")
 shoulderMinNode = NodePath("../../ShoulderMins/ShoulderMinLeftArm")
 
-[node name="RightArm" parent="Arms" node_paths=PackedStringArray("targetNode", "shoulderMinNode") instance=ExtResource("1_4g8bk")]
+[node name="TargetLeftArm" type="Node2D" parent="Arms/LeftArm"]
+position = Vector2(-128, 114)
+rotation = 3.14159
+scale = Vector2(39.8363, -0.440598)
+
+[node name="RightArm" parent="Arms" node_paths=PackedStringArray("toNode", "shoulderMinNode") instance=ExtResource("1_4g8bk")]
 position = Vector2(43, 16)
-targetNode = NodePath("../../Targets/TargetRightArm")
+toNode = NodePath("TargetRightArm")
 shoulderMinNode = NodePath("../../ShoulderMins/ShoulderMinRightArm")
 
-[node name="LeftLeg" parent="Arms" node_paths=PackedStringArray("targetNode", "shoulderMinNode") instance=ExtResource("1_4g8bk")]
+[node name="TargetRightArm" type="Node2D" parent="Arms/RightArm"]
+position = Vector2(184, 99)
+
+[node name="LeftLeg" parent="Arms" node_paths=PackedStringArray("toNode", "shoulderMinNode") instance=ExtResource("1_4g8bk")]
 position = Vector2(-26, 168)
-targetNode = NodePath("../../Targets/TargetLeftLeg")
+toNode = NodePath("TargetLeftLeg")
 shoulderMinNode = NodePath("../../ShoulderMins/ShoulderMinLeftLeg")
 
-[node name="RightLeg" parent="Arms" node_paths=PackedStringArray("targetNode", "shoulderMinNode") instance=ExtResource("1_4g8bk")]
+[node name="TargetLeftLeg" type="Node2D" parent="Arms/LeftLeg"]
+position = Vector2(-57, 223)
+
+[node name="RightLeg" parent="Arms" node_paths=PackedStringArray("toNode", "shoulderMinNode") instance=ExtResource("1_4g8bk")]
 position = Vector2(26, 166)
-reverseKnee = true
-targetNode = NodePath("../../Targets/TargetRightLeg")
+isKneeReversed = true
+toNode = NodePath("TargetRightLeg")
 shoulderMinNode = NodePath("../../ShoulderMins/ShoulderMinRightLeg")
+
+[node name="TargetRightLeg" type="Node2D" parent="Arms/RightLeg"]
+position = Vector2(42, 181)
 
 [node name="Targets" type="Node2D" parent="."]
 
-[node name="TargetLeftArm" type="Node2D" parent="Targets"]
-position = Vector2(-197, 40)
-scale = Vector2(-39.8363, 0.440598)
-
-[node name="TargetRightArm" type="Node2D" parent="Targets"]
-position = Vector2(238, 11)
-
-[node name="TargetLeftLeg" type="Node2D" parent="Targets"]
-position = Vector2(-98, 289)
-
-[node name="TargetRightLeg" type="Node2D" parent="Targets"]
-position = Vector2(69, 223)
-
 [node name="ShoulderMins" type="Node2D" parent="."]
-position = Vector2(1, 44)
+position = Vector2(11, 87)
 
 [node name="ShoulderMinLeftArm" type="Node2D" parent="ShoulderMins"]
-position = Vector2(11, 17)
 
 [node name="ShoulderMinRightArm" type="Node2D" parent="ShoulderMins"]
-position = Vector2(130, -70)
 
 [node name="ShoulderMinLeftLeg" type="Node2D" parent="ShoulderMins"]
-position = Vector2(0, 138)
 
 [node name="ShoulderMinRightLeg" type="Node2D" parent="ShoulderMins"]
-position = Vector2(0, 139)

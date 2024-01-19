@@ -10,20 +10,14 @@ public partial class Limb : Node2D
 	float length2;
 
 	[Export]
-	bool reverseKnee=false;
+	bool isKneeReversed;
 
 	[Export]
-	Node2D targetNode,shoulderMinNode;
-
-	Node2D elbowNode,endNode,sholderNode;
+	Node2D toNode,elbowNode,endNode,shoulderMinNode,startNode,rootNode;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		elbowNode = GetNode<Node2D>("Elbow");
-		endNode = GetNode<Node2D>("End");
-		shoulderMinNode = GetNode<Node2D>("MinShoulder");
-		sholderNode = GetNode<Node2D>("Shoulder");
 	}
 
 	private float cosineRuleForAngle(float a, float b, float c){
@@ -35,7 +29,7 @@ public partial class Limb : Node2D
 		var delta = target-start;
 		var shoulderThreshold = length1/2;
 		
-		var stoStartLerp = start+((delta*0.05f).Normalized()*(Math.Min((delta*0.1f).Length(),shoulderThreshold)));
+		var stoStartLerp = start+((delta*0.1f).Normalized()*(Math.Min((delta*0.1f).Length(),shoulderThreshold)));
 		//var stoStartLerp = start.add(target.sub(start).normalised(-0.2).rotate(Math.PI/4));
 		//var stoSMinLerp = shoulderMin.add(target.sub(shoulderMin).times(0.1));
 		//drawer.draw([shoulderMin,stoSMinLerp])
@@ -44,16 +38,15 @@ public partial class Limb : Node2D
 	}
 	private void updateJointPositions(){
 
-		if(targetNode==null||elbowNode==null||endNode==null||shoulderMinNode==null||sholderNode==null){
+		if(toNode==null||elbowNode==null||endNode==null||shoulderMinNode==null||startNode==null){
 			return;
 		}
 		
-		var fromNode = this;
-		var target = targetNode.Position;
+		var fromNode = rootNode;
+		var target = toNode.Position;
+
 		var start = getShoulderPos(fromNode.Position,target,shoulderMinNode.Position);
-
-		sholderNode.Position = start;
-
+		startNode.Position = start;
 		var targetDelta = target-start;
 
 
@@ -72,7 +65,7 @@ public partial class Limb : Node2D
 				targetDelta = targetDelta.Normalized()*(minLength+0.00001f);
 			}
 			
-			var angleFromDeltaToElbow = cosineRuleForAngle(length1,targetDelta.Length(),length2)*(reverseKnee?-1:1);
+			var angleFromDeltaToElbow = cosineRuleForAngle(length1,targetDelta.Length(),length2)*(isKneeReversed?-1:1);
 			
 			var arm1Vec = targetDelta.Rotated(angleFromDeltaToElbow).Normalized()*length1;
 
