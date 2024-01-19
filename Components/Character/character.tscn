@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://yg23xjf6tq46"]
+[gd_scene load_steps=8 format=3 uid="uid://yg23xjf6tq46"]
 
 [ext_resource type="PackedScene" uid="uid://dukohqgfta5b7" path="res://Components/Limb/Limb.tscn" id="1_4g8bk"]
 [ext_resource type="Texture2D" uid="uid://cfd062rmrli73" path="res://Components/Limb/armSeg.png" id="1_8fdlm"]
 [ext_resource type="Script" path="res://Components/Character/PlayerControls.cs" id="1_8ts26"]
+[ext_resource type="Texture2D" uid="uid://c14u4ufpa48ea" path="res://Components/Character/body.png" id="4_5xjhb"]
+[ext_resource type="Texture2D" uid="uid://cboqseth50fxr" path="res://Components/Character/head.png" id="5_a0u51"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jxawx"]
 radius = 59.0
@@ -120,3 +122,13 @@ shape = SubResource("CapsuleShape2D_jxawx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/StaticBody2D"]
 position = Vector2(4, -45)
 shape = SubResource("CapsuleShape2D_jjjtl")
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(-2, 175)
+scale = Vector2(0.78082, 0.783454)
+texture = ExtResource("4_5xjhb")
+
+[node name="Head" type="Sprite2D" parent="."]
+position = Vector2(1, -79)
+scale = Vector2(0.517705, 0.517705)
+texture = ExtResource("5_a0u51")
