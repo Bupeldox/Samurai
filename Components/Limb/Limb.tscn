@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dukohqgfta5b7"]
+
+[ext_resource type="Script" path="res://Components/Limb/Limb.cs" id="1_drpl6"]
+[ext_resource type="Script" path="res://Components/Limb/SpriteBetweenPoints.cs" id="2_tco3k"]
+[ext_resource type="Texture2D" uid="uid://cfd062rmrli73" path="res://Components/Limb/armSeg.png" id="3_uk1kf"]
+
+[node name="Limb" type="Node2D" node_paths=PackedStringArray("targetNode", "shoulderMinNode")]
+script = ExtResource("1_drpl6")
+length1 = 100.0
+length2 = 100.0
+targetNode = NodePath("TargetPlaceholder")
+shoulderMinNode = NodePath("MinShoulder")
+
+[node name="Shoulder" type="Node2D" parent="."]
+position = Vector2(17, 4.4)
+
+[node name="TargetPlaceholder" type="Node2D" parent="."]
+position = Vector2(170, 44)
+
+[node name="End" type="Node2D" parent="."]
+position = Vector2(170, 44)
+
+[node name="Elbow" type="Node2D" parent="."]
+position = Vector2(78.1443, 83.5288)
+scale = Vector2(44, 44)
+
+[node name="MinShoulder" type="Node2D" parent="."]
+position = Vector2(-70, 24)
+
+[node name="Inbetweeners" type="Node2D" parent="."]
+
+[node name="Limb2" type="Node2D" parent="Inbetweeners" node_paths=PackedStringArray("nodeFrom", "nodeTo")]
+position = Vector2(124.072, 63.7644)
+rotation = -0.406382
+scale = Vector2(0.2, 0.2)
+script = ExtResource("2_tco3k")
+nodeFrom = NodePath("../../End")
+nodeTo = NodePath("../../Elbow")
+rescale = 0.002
+
+[node name="ArmSeg" type="Sprite2D" parent="Inbetweeners/Limb2"]
+scale = Vector2(1.56275, 1.56275)
+texture = ExtResource("3_uk1kf")
+
+[node name="Limb1" type="Node2D" parent="Inbetweeners" node_paths=PackedStringArray("nodeFrom", "nodeTo")]
+position = Vector2(47.5722, 43.9644)
+rotation = 0.912913
+scale = Vector2(0.2, 0.2)
+script = ExtResource("2_tco3k")
+nodeFrom = NodePath("../../Elbow")
+nodeTo = NodePath("../../Shoulder")
+rescale = 0.002
+
+[node name="ArmSeg" type="Sprite2D" parent="Inbetweeners/Limb1"]
+scale = Vector2(1.54163, 1.54163)
+texture = ExtResource("3_uk1kf")
