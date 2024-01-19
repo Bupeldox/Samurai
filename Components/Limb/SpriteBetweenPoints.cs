@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [Tool]
-public partial class SpriteBetweenPoints : Node2D
+public partial class SpriteBetweenPoints : StaticBody2D
 {
 	[Export]
 	Node2D nodeFrom;
@@ -31,5 +31,9 @@ public partial class SpriteBetweenPoints : Node2D
 		this.Scale = new Vector2(scale,scale); 
 
 		this.Rotation = -deltaP.AngleTo(Vector2.Right);
+
+		//this.ConstantLinearVelocity = deltaP;
+
+
 	}
 }

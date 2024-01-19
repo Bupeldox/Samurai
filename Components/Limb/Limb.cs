@@ -14,6 +14,8 @@ public partial class Limb : Node2D
 
 	[Export]
 	Node2D toNode,elbowNode,endNode,shoulderMinNode,startNode,rootNode;
+	[Export]
+	Node2D exportArmPos;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -74,11 +76,12 @@ public partial class Limb : Node2D
 			
 		}
 
-
 		var elbowToTarget = target-elbowPos;
 
 		var endPos = (elbowToTarget.Normalized()*length2)+elbowPos;
-
+		if(exportArmPos!=null){
+			exportArmPos.Position = endPos;
+		}
 		endNode.Position = endPos;
 		elbowNode.Position = elbowPos;
 	}

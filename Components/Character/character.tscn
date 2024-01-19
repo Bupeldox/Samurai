@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://yg23xjf6tq46"]
+[gd_scene load_steps=4 format=3 uid="uid://yg23xjf6tq46"]
 
 [ext_resource type="PackedScene" uid="uid://dukohqgfta5b7" path="res://Components/Limb/Limb.tscn" id="1_4g8bk"]
 [ext_resource type="Texture2D" uid="uid://cfd062rmrli73" path="res://Components/Limb/armSeg.png" id="1_8fdlm"]
+[ext_resource type="Script" path="res://Components/Character/PlayerControls.cs" id="1_8ts26"]
 
 [node name="Character" type="Node2D"]
 
@@ -13,40 +14,68 @@ texture = ExtResource("1_8fdlm")
 
 [node name="Arms" type="Node2D" parent="."]
 
-[node name="LeftArm" parent="Arms" node_paths=PackedStringArray("toNode", "shoulderMinNode") instance=ExtResource("1_4g8bk")]
+[node name="LeftArm" parent="Arms" node_paths=PackedStringArray("toNode", "shoulderMinNode", "exportArmPos") instance=ExtResource("1_4g8bk")]
 position = Vector2(-31, 13)
 isKneeReversed = true
 toNode = NodePath("TargetLeftArm")
 shoulderMinNode = NodePath("../../ShoulderMins/ShoulderMinLeftArm")
+exportArmPos = NodePath("EndRef")
 
-[node name="TargetLeftArm" type="Node2D" parent="Arms/LeftArm"]
-position = Vector2(-128, 114)
+[node name="TargetLeftArm" type="Node2D" parent="Arms/LeftArm" node_paths=PackedStringArray("armEnd")]
+position = Vector2(-198, -30)
 rotation = 3.14159
 scale = Vector2(39.8363, -0.440598)
+script = ExtResource("1_8ts26")
+action = "LeftArmActive"
+armEnd = NodePath("../EndRef")
 
-[node name="RightArm" parent="Arms" node_paths=PackedStringArray("toNode", "shoulderMinNode") instance=ExtResource("1_4g8bk")]
+[node name="EndRef" type="Node2D" parent="Arms/LeftArm"]
+position = Vector2(-198, -30)
+
+[node name="RightArm" parent="Arms" node_paths=PackedStringArray("toNode", "shoulderMinNode", "exportArmPos") instance=ExtResource("1_4g8bk")]
 position = Vector2(43, 16)
 toNode = NodePath("TargetRightArm")
 shoulderMinNode = NodePath("../../ShoulderMins/ShoulderMinRightArm")
+exportArmPos = NodePath("EndRef")
 
-[node name="TargetRightArm" type="Node2D" parent="Arms/RightArm"]
+[node name="TargetRightArm" type="Node2D" parent="Arms/RightArm" node_paths=PackedStringArray("armEnd")]
+position = Vector2(184, 99)
+script = ExtResource("1_8ts26")
+action = "RightArmActive"
+armEnd = NodePath("../EndRef")
+
+[node name="EndRef" type="Node2D" parent="Arms/RightArm"]
 position = Vector2(184, 99)
 
-[node name="LeftLeg" parent="Arms" node_paths=PackedStringArray("toNode", "shoulderMinNode") instance=ExtResource("1_4g8bk")]
-position = Vector2(-26, 168)
+[node name="LeftLeg" parent="Arms" node_paths=PackedStringArray("toNode", "shoulderMinNode", "exportArmPos") instance=ExtResource("1_4g8bk")]
+position = Vector2(-21, 201)
 toNode = NodePath("TargetLeftLeg")
 shoulderMinNode = NodePath("../../ShoulderMins/ShoulderMinLeftLeg")
+exportArmPos = NodePath("EndRef")
 
-[node name="TargetLeftLeg" type="Node2D" parent="Arms/LeftLeg"]
+[node name="TargetLeftLeg" type="Node2D" parent="Arms/LeftLeg" node_paths=PackedStringArray("armEnd")]
+position = Vector2(-57, 223)
+script = ExtResource("1_8ts26")
+action = "LeftLegActive"
+armEnd = NodePath("../EndRef")
+
+[node name="EndRef" type="Node2D" parent="Arms/LeftLeg"]
 position = Vector2(-57, 223)
 
-[node name="RightLeg" parent="Arms" node_paths=PackedStringArray("toNode", "shoulderMinNode") instance=ExtResource("1_4g8bk")]
-position = Vector2(26, 166)
+[node name="RightLeg" parent="Arms" node_paths=PackedStringArray("toNode", "shoulderMinNode", "exportArmPos") instance=ExtResource("1_4g8bk")]
+position = Vector2(33, 200)
 isKneeReversed = true
 toNode = NodePath("TargetRightLeg")
 shoulderMinNode = NodePath("../../ShoulderMins/ShoulderMinRightLeg")
+exportArmPos = NodePath("EndRef")
 
-[node name="TargetRightLeg" type="Node2D" parent="Arms/RightLeg"]
+[node name="TargetRightLeg" type="Node2D" parent="Arms/RightLeg" node_paths=PackedStringArray("armEnd")]
+position = Vector2(42, 181)
+script = ExtResource("1_8ts26")
+action = "RightLegActive"
+armEnd = NodePath("../EndRef")
+
+[node name="EndRef" type="Node2D" parent="Arms/RightLeg"]
 position = Vector2(42, 181)
 
 [node name="Targets" type="Node2D" parent="."]
