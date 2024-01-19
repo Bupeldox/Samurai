@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dukohqgfta5b7"]
+[gd_scene load_steps=6 format=3 uid="uid://dukohqgfta5b7"]
 
 [ext_resource type="Script" path="res://Components/Limb/Limb.cs" id="1_drpl6"]
+[ext_resource type="PhysicsMaterial" uid="uid://cg4wfla8gn6xp" path="res://Components/Limb/new_physics_material.tres" id="2_1w0sm"]
 [ext_resource type="Script" path="res://Components/Limb/SpriteBetweenPoints.cs" id="2_tco3k"]
 [ext_resource type="Texture2D" uid="uid://cfd062rmrli73" path="res://Components/Limb/armSeg.png" id="3_uk1kf"]
 
@@ -40,9 +41,10 @@ position = Vector2(-70, 24)
 [node name="Inbetweeners" type="Node2D" parent="."]
 
 [node name="Limb2" type="StaticBody2D" parent="Inbetweeners" node_paths=PackedStringArray("nodeFrom", "nodeTo")]
-position = Vector2(182.709, 112.974)
-rotation = -0.269578
+position = Vector2(95.3128, 93.0487)
+rotation = -0.864314
 scale = Vector2(0.3, 0.3)
+physics_material_override = ExtResource("2_1w0sm")
 script = ExtResource("2_tco3k")
 nodeFrom = NodePath("../../End")
 nodeTo = NodePath("../../Elbow")
@@ -55,7 +57,6 @@ texture = ExtResource("3_uk1kf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inbetweeners/Limb2"]
 position = Vector2(3.79712, 0.674377)
 rotation = -1.57299
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_f46pt")
 debug_color = Color(0, 0.6, 0.701961, 0.113725)
 
@@ -63,6 +64,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.113725)
 position = Vector2(30.5128, 76.8487)
 rotation = 1.35427
 scale = Vector2(0.3, 0.3)
+physics_material_override = ExtResource("2_1w0sm")
 constant_linear_velocity = Vector2(146.735, 31.1256)
 script = ExtResource("2_tco3k")
 nodeFrom = NodePath("../../Elbow")
@@ -76,6 +78,5 @@ texture = ExtResource("3_uk1kf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inbetweeners/Limb1"]
 position = Vector2(3.79712, 0.674377)
 rotation = -1.57299
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_f46pt")
 debug_color = Color(0, 0.721569, 0.843137, 0.0745098)

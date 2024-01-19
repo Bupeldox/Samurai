@@ -1,28 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://bms0ivq5rguiv"]
+[gd_scene load_steps=6 format=3 uid="uid://bms0ivq5rguiv"]
 
+[ext_resource type="Script" path="res://Scenes/World/LockCursor.cs" id="1_ok0e1"]
 [ext_resource type="PackedScene" uid="uid://yg23xjf6tq46" path="res://Components/Character/character.tscn" id="1_x11xr"]
+[ext_resource type="Script" path="res://Scenes/World/RespawnIfFallen.cs" id="2_dmb71"]
 [ext_resource type="Texture2D" uid="uid://cm8j0ymtqkyoi" path="res://icon.svg" id="2_m3a8a"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_icf28"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vp8hf"]
 radius = 41.0122
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_ok0e1")
 
 [node name="Character" parent="." instance=ExtResource("1_x11xr")]
-position = Vector2(564, 177)
-scale = Vector2(0.970583, 0.970583)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(581, 636)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(4, 2)
-shape = SubResource("WorldBoundaryShape2D_icf28")
+position = Vector2(583, 307)
+scale = Vector2(0.612345, 0.612345)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(423, 123)
+position = Vector2(557, 59)
+script = ExtResource("2_dmb71")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CircleShape2D_vp8hf")

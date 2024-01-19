@@ -1,15 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://yg23xjf6tq46"]
+[gd_scene load_steps=6 format=3 uid="uid://yg23xjf6tq46"]
 
 [ext_resource type="PackedScene" uid="uid://dukohqgfta5b7" path="res://Components/Limb/Limb.tscn" id="1_4g8bk"]
 [ext_resource type="Texture2D" uid="uid://cfd062rmrli73" path="res://Components/Limb/armSeg.png" id="1_8fdlm"]
 [ext_resource type="Script" path="res://Components/Character/PlayerControls.cs" id="1_8ts26"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jxawx"]
+radius = 59.0
+height = 244.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jjjtl"]
+radius = 49.0
+height = 98.0
+
 [node name="Character" type="Node2D"]
 
 [node name="ArmSeg" type="Sprite2D" parent="."]
-position = Vector2(7, 112)
+position = Vector2(0.999999, 110)
 rotation = 1.57079
 scale = Vector2(0.601774, 1.2447)
+texture = ExtResource("1_8fdlm")
+
+[node name="ArmSeg2" type="Sprite2D" parent="."]
+position = Vector2(8, -45)
+rotation = -1.57079
+scale = Vector2(0.2, 1)
 texture = ExtResource("1_8fdlm")
 
 [node name="Arms" type="Node2D" parent="."]
@@ -22,7 +36,7 @@ shoulderMinNode = NodePath("../../ShoulderMins/ShoulderMinLeftArm")
 exportArmPos = NodePath("EndRef")
 
 [node name="TargetLeftArm" type="Node2D" parent="Arms/LeftArm" node_paths=PackedStringArray("armEnd")]
-position = Vector2(-198, -30)
+position = Vector2(-339, 8)
 rotation = 3.14159
 scale = Vector2(39.8363, -0.440598)
 script = ExtResource("1_8ts26")
@@ -30,7 +44,7 @@ action = "LeftArmActive"
 armEnd = NodePath("../EndRef")
 
 [node name="EndRef" type="Node2D" parent="Arms/LeftArm"]
-position = Vector2(-198, -30)
+position = Vector2(-333.816, 7.87768)
 
 [node name="RightArm" parent="Arms" node_paths=PackedStringArray("toNode", "shoulderMinNode", "exportArmPos") instance=ExtResource("1_4g8bk")]
 position = Vector2(43, 16)
@@ -39,44 +53,44 @@ shoulderMinNode = NodePath("../../ShoulderMins/ShoulderMinRightArm")
 exportArmPos = NodePath("EndRef")
 
 [node name="TargetRightArm" type="Node2D" parent="Arms/RightArm" node_paths=PackedStringArray("armEnd")]
-position = Vector2(184, 99)
+position = Vector2(338, 2)
 script = ExtResource("1_8ts26")
 action = "RightArmActive"
 armEnd = NodePath("../EndRef")
 
 [node name="EndRef" type="Node2D" parent="Arms/RightArm"]
-position = Vector2(184, 99)
+position = Vector2(333.795, 1.97512)
 
 [node name="LeftLeg" parent="Arms" node_paths=PackedStringArray("toNode", "shoulderMinNode", "exportArmPos") instance=ExtResource("1_4g8bk")]
-position = Vector2(-21, 201)
+position = Vector2(-43, 191)
 toNode = NodePath("TargetLeftLeg")
 shoulderMinNode = NodePath("../../ShoulderMins/ShoulderMinLeftLeg")
 exportArmPos = NodePath("EndRef")
 
 [node name="TargetLeftLeg" type="Node2D" parent="Arms/LeftLeg" node_paths=PackedStringArray("armEnd")]
-position = Vector2(-57, 223)
+position = Vector2(-13, 333)
 script = ExtResource("1_8ts26")
 action = "LeftLegActive"
 armEnd = NodePath("../EndRef")
 
 [node name="EndRef" type="Node2D" parent="Arms/LeftLeg"]
-position = Vector2(-57, 223)
+position = Vector2(-13, 333)
 
 [node name="RightLeg" parent="Arms" node_paths=PackedStringArray("toNode", "shoulderMinNode", "exportArmPos") instance=ExtResource("1_4g8bk")]
-position = Vector2(33, 200)
+position = Vector2(49, 190)
 isKneeReversed = true
 toNode = NodePath("TargetRightLeg")
 shoulderMinNode = NodePath("../../ShoulderMins/ShoulderMinRightLeg")
 exportArmPos = NodePath("EndRef")
 
 [node name="TargetRightLeg" type="Node2D" parent="Arms/RightLeg" node_paths=PackedStringArray("armEnd")]
-position = Vector2(42, 181)
+position = Vector2(17, 333)
 script = ExtResource("1_8ts26")
 action = "RightLegActive"
 armEnd = NodePath("../EndRef")
 
 [node name="EndRef" type="Node2D" parent="Arms/RightLeg"]
-position = Vector2(42, 181)
+position = Vector2(16.9954, 332.91)
 
 [node name="Targets" type="Node2D" parent="."]
 
@@ -84,9 +98,25 @@ position = Vector2(42, 181)
 position = Vector2(11, 87)
 
 [node name="ShoulderMinLeftArm" type="Node2D" parent="ShoulderMins"]
+position = Vector2(13, -72)
 
 [node name="ShoulderMinRightArm" type="Node2D" parent="ShoulderMins"]
+position = Vector2(-25, -74)
 
 [node name="ShoulderMinLeftLeg" type="Node2D" parent="ShoulderMins"]
+position = Vector2(-11, 81)
 
 [node name="ShoulderMinRightLeg" type="Node2D" parent="ShoulderMins"]
+position = Vector2(-11, 81)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 105)
+shape = SubResource("CapsuleShape2D_jxawx")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/StaticBody2D"]
+position = Vector2(4, -45)
+shape = SubResource("CapsuleShape2D_jjjtl")
