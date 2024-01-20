@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dukohqgfta5b7"]
+[gd_scene load_steps=7 format=3 uid="uid://dukohqgfta5b7"]
 
 [ext_resource type="Script" path="res://Components/Limb/Limb.cs" id="1_drpl6"]
 [ext_resource type="PhysicsMaterial" uid="uid://cg4wfla8gn6xp" path="res://Components/Limb/new_physics_material.tres" id="2_1w0sm"]
 [ext_resource type="Script" path="res://Components/Limb/SpriteBetweenPoints.cs" id="2_tco3k"]
-[ext_resource type="Texture2D" uid="uid://cfd062rmrli73" path="res://Components/Limb/armSeg.png" id="3_uk1kf"]
-[ext_resource type="Texture2D" uid="uid://74bf7npubmve" path="res://Components/Limb/upperleftarm.png" id="5_81lcp"]
-[ext_resource type="Texture2D" uid="uid://cg7t8qsh2ny75" path="res://Components/Limb/LeftLowerArm.png" id="6_614ph"]
+[ext_resource type="Texture2D" path="res://Assets/CharacterV1/UpperArmv1.png" id="4_u8d0v"]
+[ext_resource type="Texture2D" path="res://Assets/CharacterV1/LowerArmv1.png" id="5_5iydi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f46pt"]
 radius = 61.2023
@@ -25,16 +24,16 @@ rootNode = NodePath("Root")
 [node name="Root" type="Node2D" parent="."]
 
 [node name="Shoulder" type="Node2D" parent="."]
-position = Vector2(38.6, 0.3)
+position = Vector2(30.5, 3.4)
 
 [node name="TargetPlaceholder" type="Node2D" parent="."]
-position = Vector2(386, 3)
+position = Vector2(305, 34)
 
 [node name="End" type="Node2D" parent="."]
-position = Vector2(338.591, 2.63154)
+position = Vector2(305, 34)
 
 [node name="Elbow" type="Node2D" parent="."]
-position = Vector2(188.595, 1.46577)
+position = Vector2(161.263, 76.8916)
 scale = Vector2(44, 44)
 
 [node name="MinShoulder" type="Node2D" parent="."]
@@ -43,8 +42,8 @@ position = Vector2(-70, 24)
 [node name="Inbetweeners" type="Node2D" parent="."]
 
 [node name="Limb1" type="StaticBody2D" parent="Inbetweeners" node_paths=PackedStringArray("nodeFrom", "nodeTo")]
-position = Vector2(113.598, 0.882884)
-rotation = 0.00777186
+position = Vector2(95.8815, 40.1458)
+rotation = 0.512026
 scale = Vector2(0.3, 0.3)
 physics_material_override = ExtResource("2_1w0sm")
 constant_linear_velocity = Vector2(146.735, 31.1256)
@@ -53,25 +52,21 @@ nodeFrom = NodePath("../../Elbow")
 nodeTo = NodePath("../../Shoulder")
 rescale = 0.002
 
-[node name="ArmSeg" type="Sprite2D" parent="Inbetweeners/Limb1"]
-scale = Vector2(1.54163, 1.09052)
-texture = ExtResource("3_uk1kf")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inbetweeners/Limb1"]
 position = Vector2(3.79712, 0.674377)
 rotation = -1.57299
 shape = SubResource("CapsuleShape2D_f46pt")
 debug_color = Color(0, 0.721569, 0.843137, 0.0745098)
 
-[node name="Upperleftarm" type="Sprite2D" parent="Inbetweeners/Limb1"]
-position = Vector2(-1.98932, 0.405872)
-rotation = 3.13382
-scale = Vector2(0.64868, -0.64868)
-texture = ExtResource("5_81lcp")
+[node name="UpperArmv1" type="Sprite2D" parent="Inbetweeners/Limb1"]
+position = Vector2(-15.6736, -49.1043)
+rotation = 1.86608
+scale = Vector2(1.944, -1.944)
+texture = ExtResource("4_u8d0v")
 
 [node name="Limb2" type="StaticBody2D" parent="Inbetweeners" node_paths=PackedStringArray("nodeFrom", "nodeTo")]
-position = Vector2(263.593, 2.04865)
-rotation = 0.00777186
+position = Vector2(233.132, 55.4458)
+rotation = -0.289992
 scale = Vector2(0.3, 0.3)
 physics_material_override = ExtResource("2_1w0sm")
 script = ExtResource("2_tco3k")
@@ -79,18 +74,14 @@ nodeFrom = NodePath("../../End")
 nodeTo = NodePath("../../Elbow")
 rescale = 0.002
 
-[node name="ArmSeg" type="Sprite2D" parent="Inbetweeners/Limb2"]
-scale = Vector2(1.56275, 0.999106)
-texture = ExtResource("3_uk1kf")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inbetweeners/Limb2"]
 position = Vector2(3.79712, 0.674377)
 rotation = -1.57299
 shape = SubResource("CapsuleShape2D_f46pt")
 debug_color = Color(0, 0.6, 0.701961, 0.113725)
 
-[node name="LeftLowerArm" type="Sprite2D" parent="Inbetweeners/Limb2"]
-position = Vector2(94.7888, 12.4349)
-rotation = 3.13382
-scale = Vector2(1.01281, -1.01281)
-texture = ExtResource("6_614ph")
+[node name="LowerArmv1" type="Sprite2D" parent="Inbetweeners/Limb2"]
+position = Vector2(12.4467, -8.27237)
+rotation = 1.70007
+scale = Vector2(1.63458, -2.3771)
+texture = ExtResource("5_5iydi")
