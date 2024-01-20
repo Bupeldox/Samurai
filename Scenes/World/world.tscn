@@ -1,3 +1,42 @@
-[gd_scene format=3 uid="uid://bms0ivq5rguiv"]
+[gd_scene load_steps=7 format=3 uid="uid://bms0ivq5rguiv"]
+
+[ext_resource type="Texture2D" uid="uid://cbcgpavqu7ygt" path="res://Scenes/World/background.png" id="1_3pw2s"]
+[ext_resource type="PackedScene" uid="uid://clmvkvikde70o" path="res://Components/character_placeholder.tscn" id="2_bslym"]
+[ext_resource type="Script" path="res://Scenes/World/PathFollower.cs" id="3_ia3xm"]
+[ext_resource type="Texture2D" uid="uid://c2lvrx1od5n4f" path="res://Assets/Paperwork.png" id="5_ek156"]
+[ext_resource type="Script" path="res://Scenes/World/Spin.cs" id="5_fmojt"]
+
+[sub_resource type="Curve2D" id="Curve2D_02bbt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -175, 778, -239.031, 66.5956, 239.031, -66.5956, 681, 285, -129.624, -27.3518, 129.624, 27.3518, 1190, 238, -3.56762, -112.975, 3.56762, 112.975, 1642, 535, 187.895, 16.6489, -187.895, -16.6489, 1412, 761, -14.2705, 70.1632, 14.2705, -70.1632, 1255, 533, -72.5416, 49.9467, 72.5416, -49.9467, 1407, 304, -83.2445, 44.0007, 83.2445, -44.0007, 1716, 124, 0, 0, 0, 0, 2854, -178)
+}
+point_count = 9
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(957.875, 534.158)
+scale = Vector2(1.06903, 1.06903)
+texture = ExtResource("1_3pw2s")
+
+[node name="CharacterPlaceholder" parent="." instance=ExtResource("2_bslym")]
+position = Vector2(949, 512)
+scale = Vector2(0.559936, 0.559936)
+
+[node name="PathFollower" type="Node2D" parent="."]
+position = Vector2(-23, -159)
+
+[node name="Path2D" type="Path2D" parent="PathFollower"]
+curve = SubResource("Curve2D_02bbt")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PathFollower/Path2D"]
+position = Vector2(-175, 778)
+rotation = -0.484693
+rotates = false
+script = ExtResource("3_ia3xm")
+speed = 1000.0
+
+[node name="Paperwork" type="Sprite2D" parent="PathFollower/Path2D/PathFollow2D"]
+scale = Vector2(0.875171, 0.875171)
+texture = ExtResource("5_ek156")
+script = ExtResource("5_fmojt")
