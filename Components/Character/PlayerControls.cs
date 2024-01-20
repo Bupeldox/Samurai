@@ -21,7 +21,6 @@ public partial class PlayerControls : Node2D
 	public override void _Input(InputEvent @event)
 	{
 		if (@event is InputEventMouseMotion eventMouseMotion){
-			GD.Print("Mouse Motion at: ", eventMouseMotion.Position);
 			
 			if(Input.IsActionPressed(action)){
 				this.Position+=eventMouseMotion.Relative;

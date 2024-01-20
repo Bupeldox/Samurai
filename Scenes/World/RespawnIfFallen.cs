@@ -13,7 +13,7 @@ public partial class RespawnIfFallen : RigidBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if(this.Position.Y>GetViewportRect().End.Y-100){
+		if(this.Position.Y>GetViewportRect().End.Y-200){
 			//SetPhysicsProcess(false);
 			//var t = GetTransform();
 			//t.Origin-=(startPos-Position);

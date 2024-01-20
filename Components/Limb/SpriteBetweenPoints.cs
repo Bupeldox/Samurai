@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [Tool]
-public partial class SpriteBetweenPoints : StaticBody2D
+public partial class SpriteBetweenPoints : Node2D
 {
 	[Export]
 	Node2D nodeFrom;

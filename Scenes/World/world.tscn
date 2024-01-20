@@ -1,13 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://bms0ivq5rguiv"]
+[gd_scene load_steps=12 format=3 uid="uid://bms0ivq5rguiv"]
 
 [ext_resource type="Script" path="res://Scenes/World/LockCursor.cs" id="1_ok0e1"]
 [ext_resource type="PackedScene" uid="uid://yg23xjf6tq46" path="res://Components/Character/character.tscn" id="1_x11xr"]
 [ext_resource type="Script" path="res://Scenes/World/RespawnIfFallen.cs" id="2_dmb71"]
-[ext_resource type="Texture2D" path="res://Scenes/World/background.png" id="2_i1hf5"]
-[ext_resource type="Texture2D" path="res://Assets/Paperwork.png" id="5_2huvm"]
+[ext_resource type="Texture2D" uid="uid://cbcgpavqu7ygt" path="res://Scenes/World/background.png" id="2_i1hf5"]
+[ext_resource type="Texture2D" uid="uid://c2lvrx1od5n4f" path="res://Assets/Paperwork.png" id="5_2huvm"]
+[ext_resource type="Script" path="res://Components/Limb/StaticBodyPhysics.cs" id="6_otkuu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egxcj"]
 size = Vector2(72, 109)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2k38i"]
+size = Vector2(99, 100)
+
+[sub_resource type="Gradient" id="Gradient_einf6"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n2pem"]
+gradient = SubResource("Gradient_einf6")
+width = 1
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b4jrv"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ok0e1")
@@ -32,3 +44,33 @@ shape = SubResource("RectangleShape2D_egxcj")
 [node name="Icon" type="Sprite2D" parent="RigidBody2D"]
 scale = Vector2(0.53352, 0.53352)
 texture = ExtResource("5_2huvm")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(936, 1148)
+scale = Vector2(21.08, 1.40923)
+script = ExtResource("6_otkuu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_2k38i")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(100, 100)
+texture = SubResource("GradientTexture1D_n2pem")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(6, 549)
+rotation = 1.57079
+shape = SubResource("WorldBoundaryShape2D_b4jrv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(958, 10)
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_b4jrv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(1930, 443)
+rotation = -1.57079
+shape = SubResource("WorldBoundaryShape2D_b4jrv")
