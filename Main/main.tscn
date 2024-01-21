@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://clbtg3mwlirjv"]
+[gd_scene load_steps=4 format=3 uid="uid://clbtg3mwlirjv"]
 
 [ext_resource type="Script" path="res://Main/main.cs" id="1_ins5k"]
-[ext_resource type="PackedScene" uid="uid://bms0ivq5rguiv" path="res://Scenes/World/world.tscn" id="2_ro4ho"]
+[ext_resource type="PackedScene" uid="uid://bykckjyph3ljq" path="res://Demos/TelegraphedAttack/TelegraphDemo.tscn" id="2_nufwe"]
+[ext_resource type="PackedScene" uid="uid://bms0ivq5rguiv" path="res://Scenes/World/world.tscn" id="2_skokn"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ins5k")
-Levels = Array[PackedScene]([ExtResource("2_ro4ho")])
+Levels = Array[PackedScene]([ExtResource("2_nufwe"), ExtResource("2_skokn")])
