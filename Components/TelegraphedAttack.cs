@@ -2,11 +2,15 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 public partial class TelegraphedAttack : Area2D
 {
 	[Export]
 	float telegraphTime = 3f;
+
+	[Signal]
+    public delegate void DoDamageEventHandler();
 
 
 	bool isGoing = false;
@@ -48,6 +52,7 @@ public partial class TelegraphedAttack : Area2D
 	{
 
 		if(!isGoing){
+			hasHit = false;
 			polygon.Visible = false;
 			time = 0f; 
 			return;
@@ -74,12 +79,34 @@ public partial class TelegraphedAttack : Area2D
 		//attack period
 		if(time>telegraphTime){
 			polygon.Color = new Color("#ff2222");
+			doAttack();
 			return;
 		}
 		
 		
 		
 
-
 	}
+
+	bool hasHit = false;
+	private void doAttack(){
+
+			if(hasHit){
+				//onlyHitOnce.
+				return;
+			}
+
+			var bods = GetOverlappingBodies();
+
+			var damageable = bods.FirstOrDefault(i=>
+			i.HasMeta("Damageable") && i.GetMeta("Damageable").As<bool>(),null);
+			if(damageable==null){
+				return;
+			}
+
+			hasHit = true;
+			EmitSignal(SignalName.DoDamage);
+
+		}
+
 }

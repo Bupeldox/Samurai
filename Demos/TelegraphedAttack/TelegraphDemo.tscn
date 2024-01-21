@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bykckjyph3ljq"]
+[gd_scene load_steps=8 format=3 uid="uid://bykckjyph3ljq"]
 
 [ext_resource type="Script" path="res://Components/TelegraphedAttack.cs" id="1_jtwve"]
+[ext_resource type="Script" path="res://Demos/TelegraphedAttack/DemoDamaged.cs" id="3_sray4"]
 
 [sub_resource type="Animation" id="Animation_gxwd1"]
 resource_name = "World1Animation"
@@ -41,6 +42,15 @@ _data = {
 "World1Animation": SubResource("Animation_gxwd1")
 }
 
+[sub_resource type="Gradient" id="Gradient_ni51b"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wlrmo"]
+gradient = SubResource("Gradient_ni51b")
+width = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_be2dt"]
+radius = 58.1378
+
 [node name="TelegraphDemo" type="Node2D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -70,3 +80,27 @@ polygon = PackedVector2Array(-99, -110, -189, -151, -3, 299, 87, 321)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TelegraphAttack"]
 polygon = PackedVector2Array(-167, -119, 7, 285, 64, 302, -111, -101)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(987, 660)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
+metadata/Damageable = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/StaticBody2D"]
+scale = Vector2(100, 100)
+texture = SubResource("GradientTexture1D_wlrmo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+shape = SubResource("CircleShape2D_be2dt")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 711.0
+offset_top = 88.0
+offset_right = 751.0
+offset_bottom = 111.0
+scale = Vector2(6.32793, 6.09282)
+script = ExtResource("3_sray4")
+
+[connection signal="DoDamage" from="TelegraphAttack2" to="Label" method="_attack_do_damage"]
+[connection signal="DoDamage" from="TelegraphAttack" to="Label" method="attack_do_damage"]
