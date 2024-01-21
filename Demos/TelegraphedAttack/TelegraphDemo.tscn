@@ -119,7 +119,7 @@ offset_bottom = 1004.0
 text = "Telegraphs
 I thought it would be good to have the telegraphed ones as polygons so we can edit the shapes easily.
 I have inset the collision shape a bit to make them a bit lenient in terms of dodging, but it's kinda annoying to set it up, I know there is a way of insetting polygons so could use that.
-I also dont like how its not it's own scene "
+I also don't like how it's not its own scene "
 label_settings = SubResource("LabelSettings_ckt87")
 autowrap_mode = 2
 
