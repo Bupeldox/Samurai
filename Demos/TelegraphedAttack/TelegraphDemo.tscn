@@ -67,7 +67,7 @@ libraries = {
 autoplay = "World1Animation"
 
 [node name="TelegraphAttack2" type="Area2D" parent="."]
-position = Vector2(938, 521)
+position = Vector2(680, 509)
 script = ExtResource("1_jtwve")
 
 [node name="Polygon2D" type="Polygon2D" parent="TelegraphAttack2"]
@@ -77,7 +77,7 @@ polygon = PackedVector2Array(72, 161, 73, 0, -155, 1, -152, 171, -48, 288)
 polygon = PackedVector2Array(-133, 26, -133, 152, -48, 253, 46, 152, 49, 23)
 
 [node name="TelegraphAttack" type="Area2D" parent="."]
-position = Vector2(532, 445)
+position = Vector2(274, 433)
 script = ExtResource("1_jtwve")
 telegraphTime = 2.0
 
@@ -88,7 +88,7 @@ polygon = PackedVector2Array(-99, -110, -189, -151, -3, 299, 87, 321)
 polygon = PackedVector2Array(-167, -119, 7, 285, 64, 302, -111, -101)
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(987, 660)
+position = Vector2(729, 648)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
 metadata/Damageable = true
@@ -111,12 +111,25 @@ text = "Damage Count:0
 label_settings = SubResource("LabelSettings_2uvet")
 script = ExtResource("3_sray4")
 
+[node name="Label3" type="Label" parent="."]
+offset_left = 941.0
+offset_top = 674.0
+offset_right = 1810.0
+offset_bottom = 1004.0
+text = "Telegraphs
+I thought it would be good to have the telegraphed ones as polygons so we can edit the shapes easily.
+I have inset the collision shape a bit to make them a bit lenient in terms of dodging, but it's kinda annoying to set it up, I know there is a way of insetting polygons so could use that.
+I also dont like how its not it's own scene "
+label_settings = SubResource("LabelSettings_ckt87")
+autowrap_mode = 2
+
 [node name="Label2" type="Label" parent="."]
 offset_left = 925.0
 offset_top = 88.0
 offset_right = 1794.0
 offset_bottom = 344.0
-text = "The thing that does damage is in the script on the area2d. 
+text = "How Damage Works
+The thing that does damage is in the script on the area2d. 
 It currently looks for the metadata of the static bodey (would prefer if it was the collider its self) for \"Damageable\" and if it is damageable, fires a signal.
 
 It needs to automajicly set its self up as currently you need to connect the signal in the node tab next to the inspector. Which isn't feasable when creating a world.
