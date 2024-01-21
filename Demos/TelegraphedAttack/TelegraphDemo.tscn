@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bykckjyph3ljq"]
+[gd_scene load_steps=10 format=3 uid="uid://bykckjyph3ljq"]
 
 [ext_resource type="Script" path="res://Components/TelegraphedAttack.cs" id="1_jtwve"]
 [ext_resource type="Script" path="res://Demos/TelegraphedAttack/DemoDamaged.cs" id="3_sray4"]
@@ -51,6 +51,12 @@ width = 1
 [sub_resource type="CircleShape2D" id="CircleShape2D_be2dt"]
 radius = 58.1378
 
+[sub_resource type="LabelSettings" id="LabelSettings_2uvet"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_ckt87"]
+font_size = 24
+
 [node name="TelegraphDemo" type="Node2D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -95,12 +101,29 @@ texture = SubResource("GradientTexture1D_wlrmo")
 shape = SubResource("CircleShape2D_be2dt")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 711.0
-offset_top = 88.0
-offset_right = 751.0
-offset_bottom = 111.0
-scale = Vector2(6.32793, 6.09282)
+offset_left = 374.0
+offset_top = 82.0
+offset_right = 414.0
+offset_bottom = 105.0
+scale = Vector2(0.853, 1)
+text = "Damage Count:0
+"
+label_settings = SubResource("LabelSettings_2uvet")
 script = ExtResource("3_sray4")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 925.0
+offset_top = 88.0
+offset_right = 1794.0
+offset_bottom = 344.0
+text = "The thing that does damage is in the script on the area2d. 
+It currently looks for the metadata of the static bodey (would prefer if it was the collider its self) for \"Damageable\" and if it is damageable, fires a signal.
+
+It needs to automajicly set its self up as currently you need to connect the signal in the node tab next to the inspector. Which isn't feasable when creating a world.
+
+"
+label_settings = SubResource("LabelSettings_ckt87")
+autowrap_mode = 2
 
 [connection signal="DoDamage" from="TelegraphAttack2" to="Label" method="_attack_do_damage"]
 [connection signal="DoDamage" from="TelegraphAttack" to="Label" method="attack_do_damage"]
