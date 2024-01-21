@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://74bf7npubmve"
-path="res://.godot/imported/upperleftarm.png-802fd70dacedcdd89bf8d56bf0ba4992.ctex"
+uid="uid://cboqseth50fxr"
+path="res://.godot/imported/head.png-958ee8a4216c734bff0c53858fd5ff33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Components/Limb/upperleftarm.png"
-dest_files=["res://.godot/imported/upperleftarm.png-802fd70dacedcdd89bf8d56bf0ba4992.ctex"]
+source_file="res://Components/MathCharacter/head.png"
+dest_files=["res://.godot/imported/head.png-958ee8a4216c734bff0c53858fd5ff33.ctex"]
 
 [params]
 

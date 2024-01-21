@@ -2,15 +2,46 @@
 
 [ext_resource type="Texture2D" uid="uid://cbcgpavqu7ygt" path="res://Scenes/World/background.png" id="1_3pw2s"]
 [ext_resource type="PackedScene" uid="uid://clmvkvikde70o" path="res://Components/character_placeholder.tscn" id="2_bslym"]
-[ext_resource type="Script" path="res://Scenes/World/PathFollower.cs" id="3_ia3xm"]
-[ext_resource type="Texture2D" uid="uid://c2lvrx1od5n4f" path="res://Assets/Paperwork.png" id="5_ek156"]
-[ext_resource type="Script" path="res://Scenes/World/Spin.cs" id="5_fmojt"]
+[ext_resource type="Script" path="res://Components/TelegraphedAttack.cs" id="6_5sv76"]
 
-[sub_resource type="Curve2D" id="Curve2D_02bbt"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -175, 778, -239.031, 66.5956, 239.031, -66.5956, 681, 285, -129.624, -27.3518, 129.624, 27.3518, 1190, 238, -3.56762, -112.975, 3.56762, 112.975, 1642, 535, 187.895, 16.6489, -187.895, -16.6489, 1412, 761, -14.2705, 70.1632, 14.2705, -70.1632, 1255, 533, -72.5416, 49.9467, 72.5416, -49.9467, 1407, 304, -83.2445, 44.0007, 83.2445, -44.0007, 1716, 124, 0, 0, 0, 0, 2854, -178)
+[sub_resource type="Animation" id="Animation_gxwd1"]
+resource_name = "World1Animation"
+length = 5.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TelegraphAttack2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"StartAttack"
+}]
 }
-point_count = 9
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"StartAttack"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g1oni"]
+_data = {
+"World1Animation": SubResource("Animation_gxwd1")
+}
 
 [node name="Node2D" type="Node2D"]
 
@@ -21,13 +52,13 @@ libraries = {
 autoplay = "World1Animation"
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(955, 542)
-scale = Vector2(1.08388, 1.08388)
-texture = ExtResource("2_i1hf5")
+position = Vector2(957.875, 534.158)
+scale = Vector2(1.06903, 1.06903)
+texture = ExtResource("1_3pw2s")
 
-[node name="Character" parent="." instance=ExtResource("1_x11xr")]
-position = Vector2(942, 539)
-scale = Vector2(0.98092, 0.98092)
+[node name="CharacterPlaceholder" parent="." instance=ExtResource("2_bslym")]
+position = Vector2(949, 512)
+scale = Vector2(0.559936, 0.559936)
 
 [node name="TelegraphAttack" type="Area2D" parent="."]
 position = Vector2(705, 647)

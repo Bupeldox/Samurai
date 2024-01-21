@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class RespawnIfFallen : RigidBody2D
+public partial class DemoCharacterPhysicsObjectReturn : RigidBody2D
 {
 	Vector2 startPos;
 	// Called when the node enters the scene tree for the first time.

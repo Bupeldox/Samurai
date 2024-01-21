@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dukohqgfta5b7"]
 
-[ext_resource type="Script" path="res://Components/Limb/Limb.cs" id="1_drpl6"]
-[ext_resource type="Script" path="res://Components/Limb/SpriteBetweenPoints.cs" id="2_tco3k"]
-[ext_resource type="Script" path="res://Components/Limb/StaticBodyPhysics.cs" id="4_tyy86"]
+[ext_resource type="Script" path="res://Components/MathCharacter/MathLimb/Limb.cs" id="1_drpl6"]
+[ext_resource type="Script" path="res://Components/MathCharacter/MathLimb/SpriteBetweenPoints.cs" id="2_tco3k"]
+[ext_resource type="Script" path="res://Components/MathCharacter/MathLimb/StaticBodyPhysics.cs" id="4_tyy86"]
 [ext_resource type="Texture2D" uid="uid://lg3ev46efyac" path="res://Assets/CharacterV1/UpperArmv1.png" id="4_u8d0v"]
 [ext_resource type="Texture2D" uid="uid://bxorhfngg0aa1" path="res://Assets/CharacterV1/LowerArmv1.png" id="5_5iydi"]
 
