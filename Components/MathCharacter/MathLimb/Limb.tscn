@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://dukohqgfta5b7"]
+
+[ext_resource type="Script" path="res://Components/MathCharacter/MathLimb/Limb.cs" id="1_drpl6"]
+[ext_resource type="Script" path="res://Components/MathCharacter/MathLimb/SpriteBetweenPoints.cs" id="2_tco3k"]
+[ext_resource type="Script" path="res://Components/MathCharacter/MathLimb/StaticBodyPhysics.cs" id="4_tyy86"]
+[ext_resource type="Texture2D" uid="uid://lg3ev46efyac" path="res://Assets/CharacterV1/UpperArmv1.png" id="4_u8d0v"]
+[ext_resource type="Texture2D" uid="uid://bxorhfngg0aa1" path="res://Assets/CharacterV1/LowerArmv1.png" id="5_5iydi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f46pt"]
+radius = 113.328
+height = 616.866
+
+[node name="Limb" type="Node2D" node_paths=PackedStringArray("toNode", "elbowNode", "endNode", "shoulderMinNode", "startNode", "rootNode")]
+script = ExtResource("1_drpl6")
+length1 = 150.0
+length2 = 150.0
+toNode = NodePath("TargetPlaceholder")
+elbowNode = NodePath("Elbow")
+endNode = NodePath("End")
+shoulderMinNode = NodePath("MinShoulder")
+startNode = NodePath("Shoulder")
+rootNode = NodePath("Root")
+
+[node name="Root" type="Node2D" parent="."]
+
+[node name="Shoulder" type="Node2D" parent="."]
+position = Vector2(30.5, 3.4)
+
+[node name="TargetPlaceholder" type="Node2D" parent="."]
+position = Vector2(305, 34)
+
+[node name="End" type="Node2D" parent="."]
+position = Vector2(305, 34)
+
+[node name="Elbow" type="Node2D" parent="."]
+position = Vector2(161.263, 76.8916)
+scale = Vector2(44, 44)
+
+[node name="MinShoulder" type="Node2D" parent="."]
+position = Vector2(-70, 24)
+
+[node name="Inbetweeners" type="Node2D" parent="."]
+
+[node name="Limb1" type="Node2D" parent="Inbetweeners" node_paths=PackedStringArray("nodeFrom", "nodeTo")]
+position = Vector2(95.8815, 40.1458)
+rotation = 0.512026
+scale = Vector2(0.3, 0.3)
+script = ExtResource("2_tco3k")
+nodeFrom = NodePath("../../Elbow")
+nodeTo = NodePath("../../Shoulder")
+rescale = 0.002
+
+[node name="UpperArmv1" type="Sprite2D" parent="Inbetweeners/Limb1"]
+position = Vector2(-15.6736, -49.1043)
+rotation = 1.86608
+scale = Vector2(1.944, -1.944)
+texture = ExtResource("4_u8d0v")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Inbetweeners/Limb1"]
+script = ExtResource("4_tyy86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inbetweeners/Limb1/StaticBody2D"]
+position = Vector2(3.79712, 0.674393)
+rotation = -1.57299
+shape = SubResource("CapsuleShape2D_f46pt")
+debug_color = Color(0, 0.721569, 0.843137, 0.0745098)
+
+[node name="Limb2" type="Node2D" parent="Inbetweeners" node_paths=PackedStringArray("nodeFrom", "nodeTo")]
+position = Vector2(233.132, 55.4458)
+rotation = -0.289992
+scale = Vector2(0.3, 0.3)
+script = ExtResource("2_tco3k")
+nodeFrom = NodePath("../../End")
+nodeTo = NodePath("../../Elbow")
+rescale = 0.002
+
+[node name="LowerArmv1" type="Sprite2D" parent="Inbetweeners/Limb2"]
+position = Vector2(12.4467, -8.27237)
+rotation = 1.70007
+scale = Vector2(1.63458, -2.3771)
+texture = ExtResource("5_5iydi")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Inbetweeners/Limb2"]
+script = ExtResource("4_tyy86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inbetweeners/Limb2/StaticBody2D"]
+position = Vector2(3.79712, 0.674377)
+rotation = -1.57299
+shape = SubResource("CapsuleShape2D_f46pt")
+debug_color = Color(0, 0.6, 0.701961, 0.113725)
