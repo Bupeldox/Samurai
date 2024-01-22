@@ -1,0 +1,158 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvyrgswaqovro"]
+
+[ext_resource type="PackedScene" uid="uid://clmvkvikde70o" path="res://Components/character_placeholder.tscn" id="1_4wcf3"]
+[ext_resource type="Script" path="res://Demos/MathPlayerCharacter/LockCursor.cs" id="1_ikwe6"]
+[ext_resource type="Script" path="res://Components/TelegraphedAttack.cs" id="2_onf2n"]
+
+[sub_resource type="Animation" id="Animation_lmh24"]
+resource_name = "AttacksAndCharacterDemo"
+length = 15.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TelegraphAttack3")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(10),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"StartAttack"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TelegraphAttack2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"StartAttack"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TelegraphAttack")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"StartAttack"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TelegraphAttack4")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"StartAttack"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TelegraphAttack5")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(12),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"StartAttack"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0pe8k"]
+_data = {
+"AttacksAndCharacterDemo": SubResource("Animation_lmh24")
+}
+
+[node name="AttacksAndCharacter" type="Node2D"]
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("1_ikwe6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0pe8k")
+}
+autoplay = "AttacksAndCharacterDemo"
+
+[node name="CharacterPlaceholder" parent="." instance=ExtResource("1_4wcf3")]
+position = Vector2(960, 547)
+
+[node name="TelegraphAttack3" type="Area2D" parent="."]
+position = Vector2(546, 530)
+rotation = -1.54845
+script = ExtResource("2_onf2n")
+telegraphTime = 2.0
+
+[node name="Polygon2D" type="Polygon2D" parent="TelegraphAttack3"]
+polygon = PackedVector2Array(-99, -110, -189, -151, -3, 299, 87, 321)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TelegraphAttack3"]
+polygon = PackedVector2Array(-167, -119, 7, 285, 64, 302, -111, -101)
+
+[node name="TelegraphAttack2" type="Area2D" parent="."]
+position = Vector2(1005, 916)
+script = ExtResource("2_onf2n")
+telegraphTime = 4.0
+
+[node name="Polygon2D" type="Polygon2D" parent="TelegraphAttack2"]
+position = Vector2(-3, -2)
+polygon = PackedVector2Array(125, 133, 58, 20, -144, 21, -219, 130, -47, 154)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TelegraphAttack2"]
+polygon = PackedVector2Array(-139, 34, -193, 114, -45, 144, 97, 121, 46, 34)
+
+[node name="TelegraphAttack" type="Area2D" parent="."]
+position = Vector2(777, 426)
+script = ExtResource("2_onf2n")
+
+[node name="Polygon2D" type="Polygon2D" parent="TelegraphAttack"]
+polygon = PackedVector2Array(-99, -110, -189, -151, -3, 299, 87, 321)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TelegraphAttack"]
+polygon = PackedVector2Array(-167, -119, 7, 285, 64, 302, -111, -101)
+
+[node name="TelegraphAttack4" type="Area2D" parent="."]
+position = Vector2(688, 760)
+script = ExtResource("2_onf2n")
+telegraphTime = 2.0
+
+[node name="Polygon2D" type="Polygon2D" parent="TelegraphAttack4"]
+position = Vector2(-3, -2)
+polygon = PackedVector2Array(195, 196, 163, -78, -110, -91, -225, 303, 119, 309)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TelegraphAttack4"]
+polygon = PackedVector2Array(-92, -66, -198, 282, 97, 288, 170, 171, 139, -56)
+
+[node name="TelegraphAttack5" type="Area2D" parent="."]
+position = Vector2(953, 281)
+script = ExtResource("2_onf2n")
+telegraphTime = 2.0
+
+[node name="Polygon2D" type="Polygon2D" parent="TelegraphAttack5"]
+position = Vector2(-3, -2)
+polygon = PackedVector2Array(349, 220, 260, -48, 31, -113, -251, -29, -384, 166, -315, 309, -176, 174, -21, 91, 133, 114, 151, 358, 172, 581, 36, 743, -14, 845, 438, 881)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TelegraphAttack5"]
+polygon = PackedVector2Array(-355, 163, -303, 259, -69, 69, 143, 95, 195, 580, 8, 825, 409, 847, 313, 241, 233, -21, 25, -89, -221, -7)

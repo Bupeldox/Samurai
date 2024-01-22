@@ -57,8 +57,7 @@ scale = Vector2(1.06903, 1.06903)
 texture = ExtResource("1_3pw2s")
 
 [node name="CharacterPlaceholder" parent="." instance=ExtResource("2_bslym")]
-position = Vector2(949, 512)
-scale = Vector2(0.559936, 0.559936)
+position = Vector2(953, 528)
 
 [node name="TelegraphAttack" type="Area2D" parent="."]
 position = Vector2(705, 647)

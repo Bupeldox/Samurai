@@ -1,57 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://clmvkvikde70o"]
+[gd_scene load_steps=2 format=3 uid="uid://clmvkvikde70o"]
 
-[ext_resource type="Texture2D" uid="uid://l40ipig14dm6" path="res://Assets/CharacterV1/Legv1.png" id="1_kxps8"]
-[ext_resource type="Texture2D" uid="uid://b7eqre7fj8wvk" path="res://Assets/CharacterV1/Footv1.png" id="2_ms21e"]
-[ext_resource type="Texture2D" uid="uid://dq40w002dp8wc" path="res://Assets/CharacterV1/Torsov1.png" id="3_4kmvg"]
-[ext_resource type="Texture2D" uid="uid://bxorhfngg0aa1" path="res://Assets/CharacterV1/LowerArmv1.png" id="4_h02mr"]
-[ext_resource type="Texture2D" uid="uid://lg3ev46efyac" path="res://Assets/CharacterV1/UpperArmv1.png" id="5_m51c4"]
+[ext_resource type="PackedScene" uid="uid://yg23xjf6tq46" path="res://Components/MathCharacter/MathCharacter.tscn" id="1_bp2wa"]
 
 [node name="CharacterPlaceholder" type="Node2D"]
 
-[node name="Legv1" type="Sprite2D" parent="."]
-position = Vector2(-50.5, 611.5)
-texture = ExtResource("1_kxps8")
-
-[node name="Footv1" type="Sprite2D" parent="."]
-position = Vector2(-81.5, 820.5)
-texture = ExtResource("2_ms21e")
-
-[node name="Legv2" type="Sprite2D" parent="."]
-position = Vector2(91.5, 614.5)
-rotation = 3.14159
-scale = Vector2(1, -1)
-texture = ExtResource("1_kxps8")
-
-[node name="Footv2" type="Sprite2D" parent="."]
-position = Vector2(131.5, 823.5)
-rotation = 3.14159
-scale = Vector2(1, -1)
-texture = ExtResource("2_ms21e")
-
-[node name="Torsov1" type="Sprite2D" parent="."]
-position = Vector2(6.5, 204.5)
-texture = ExtResource("3_4kmvg")
-
-[node name="LowerArmv1" type="Sprite2D" parent="."]
-position = Vector2(246.5, 388.5)
-rotation = 3.14159
-scale = Vector2(1, -1)
-texture = ExtResource("4_h02mr")
-
-[node name="UpperArmv1" type="Sprite2D" parent="."]
-position = Vector2(-209.5, 161.5)
-texture = ExtResource("5_m51c4")
-
-[node name="UpperArmv2" type="Sprite2D" parent="."]
-position = Vector2(211.5, 148.5)
-rotation = 3.14159
-scale = Vector2(1, -1)
-texture = ExtResource("5_m51c4")
-
-[node name="LowerArmv2" type="Sprite2D" parent="."]
-position = Vector2(-244.5, 393.5)
-texture = ExtResource("4_h02mr")
-
-[node name="LowerArmv3" type="Sprite2D" parent="."]
-position = Vector2(-244.5, 393.5)
-texture = ExtResource("4_h02mr")
+[node name="Character" parent="." instance=ExtResource("1_bp2wa")]

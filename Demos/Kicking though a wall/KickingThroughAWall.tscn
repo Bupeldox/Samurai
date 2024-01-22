@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://optsni8himyf"]
+
+[ext_resource type="PackedScene" uid="uid://clmvkvikde70o" path="res://Components/character_placeholder.tscn" id="1_0pv1d"]
+[ext_resource type="Texture2D" uid="uid://c2lvrx1od5n4f" path="res://Assets/Paperwork.png" id="2_n8h7a"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p2gg6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nurhp"]
+size = Vector2(83, 154)
+
+[node name="KickingThroughAWall" type="Node2D"]
+
+[node name="CharacterPlaceholder" parent="." instance=ExtResource("1_0pv1d")]
+position = Vector2(943, 527)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(929, 1078)
+shape = SubResource("WorldBoundaryShape2D_p2gg6")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(1265, 1019)
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-5.5, 1)
+shape = SubResource("RectangleShape2D_nurhp")
+
+[node name="Paperwork" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(0.719729, 0.719729)
+texture = ExtResource("2_n8h7a")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2(1263, 925)
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+position = Vector2(-5.5, 1)
+shape = SubResource("RectangleShape2D_nurhp")
+
+[node name="Paperwork" type="Sprite2D" parent="RigidBody2D2"]
+scale = Vector2(0.719729, 0.719729)
+texture = ExtResource("2_n8h7a")
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+position = Vector2(1263, 834)
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
+position = Vector2(-5.5, 1)
+shape = SubResource("RectangleShape2D_nurhp")
+
+[node name="Paperwork" type="Sprite2D" parent="RigidBody2D3"]
+scale = Vector2(0.719729, 0.719729)
+texture = ExtResource("2_n8h7a")
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="."]
+position = Vector2(1259, 733)
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
+position = Vector2(-5.5, 1)
+shape = SubResource("RectangleShape2D_nurhp")
+
+[node name="Paperwork" type="Sprite2D" parent="RigidBody2D4"]
+scale = Vector2(0.719729, 0.719729)
+texture = ExtResource("2_n8h7a")
