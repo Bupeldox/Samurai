@@ -1,5 +1,0 @@
-[gd_resource type="PhysicsMaterial" format=3 uid="uid://cg4wfla8gn6xp"]
-
-[resource]
-friction = 0.45
-bounce = 0.7
