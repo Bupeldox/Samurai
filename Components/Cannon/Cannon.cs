@@ -16,10 +16,15 @@ public partial class Cannon : Node2D
 	}
 
 	public void FIRE(){
-		var  n = ammo.Instantiate();
-		AddChild(n);
-		var rb = n.GetNode<RigidBody2D>("RigidBody2D");
-		rb.ApplyCentralForce(aim.Position*forceMult);
+		try{
+			var  n = ammo.Instantiate();
+			AddChild(n);
+			var rb = n.GetNode<RigidBody2D>("RigidBody2D");
+			rb.ApplyCentralForce(aim.Position*forceMult);
+		}
+		catch(Exception ex){
+
+		}
 
 	}
 
