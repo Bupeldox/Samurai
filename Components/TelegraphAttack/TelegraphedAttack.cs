@@ -16,11 +16,13 @@ public partial class TelegraphedAttack : Area2D
 	bool isGoing = false;
 	float attackHoldTime = 1f;
 	Polygon2D polygon;
+	GpuParticles2D particles;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		polygon = GetNode<Polygon2D>("Polygon2D");
+		particles = GetNode<GpuParticles2D>("GPUParticles2D");
 	}
 
 	public void StartAttack(){
@@ -40,7 +42,7 @@ public partial class TelegraphedAttack : Area2D
 				GD.Print("TelegraphHigh");
 				polygon.Color = new Color("#0088ff88");
 
-			}else{
+			} else {
 				GD.Print("TelegraphOff");
 				polygon.Color = new Color("#00448833");
 			}
@@ -87,10 +89,10 @@ public partial class TelegraphedAttack : Area2D
 		
 
 	}
-
+	
 	bool hasHit = false;
 	private void doAttack(){
-
+		
 			if(hasHit){
 				//onlyHitOnce.
 				return;
@@ -99,13 +101,17 @@ public partial class TelegraphedAttack : Area2D
 			var bods = GetOverlappingBodies();
 
 			var damageable = bods.FirstOrDefault(i=>
-			i.HasMeta("Damageable") && i.GetMeta("Damageable").As<bool>(),null);
+				i.HasMeta("Damageable") && 
+				i.GetMeta("Damageable").As<bool>()
+			,null);
+			
 			if(damageable==null){
 				return;
 			}
 
 			hasHit = true;
 			EmitSignal(SignalName.DoDamage);
+			particles.Emitting = true;
 
 		}
 

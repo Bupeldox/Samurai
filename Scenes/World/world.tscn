@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cbcgpavqu7ygt" path="res://Scenes/World/background.png" id="1_3pw2s"]
 [ext_resource type="PackedScene" uid="uid://clmvkvikde70o" path="res://Components/character_placeholder.tscn" id="2_bslym"]
-[ext_resource type="Script" path="res://Components/TelegraphedAttack.cs" id="6_5sv76"]
+[ext_resource type="Script" path="res://Components/TelegraphAttack/TelegraphedAttack.cs" id="6_5sv76"]
 
 [sub_resource type="Animation" id="Animation_gxwd1"]
 resource_name = "World1Animation"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://clbtg3mwlirjv"]
+[gd_scene load_steps=9 format=3 uid="uid://clbtg3mwlirjv"]
 
 [ext_resource type="Script" path="res://Main/main.cs" id="1_ins5k"]
 [ext_resource type="PackedScene" uid="uid://optsni8himyf" path="res://Demos/Kicking though a wall/KickingThroughAWall.tscn" id="2_873oc"]
 [ext_resource type="PackedScene" uid="uid://ds83fdn00drkq" path="res://Demos/MathPlayerCharacter/MathPlayerCharacterDemo.tscn" id="2_aup3k"]
+[ext_resource type="PackedScene" uid="uid://fx8qqqqu14ke" path="res://Demos/RigidBodeyPickups/RigidBodyInteractable.tscn" id="2_lepaq"]
 [ext_resource type="PackedScene" uid="uid://bykckjyph3ljq" path="res://Demos/TelegraphedAttack/TelegraphDemo.tscn" id="2_nufwe"]
 [ext_resource type="PackedScene" uid="uid://bms0ivq5rguiv" path="res://Scenes/World/world.tscn" id="2_skokn"]
 [ext_resource type="PackedScene" uid="uid://cvyrgswaqovro" path="res://Demos/AttacksAndCharacter/AttacksAndCharacter.tscn" id="5_u46e2"]
@@ -10,7 +11,7 @@
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("titleLabel")]
 script = ExtResource("1_ins5k")
-Levels = Array[PackedScene]([ExtResource("2_873oc"), ExtResource("5_u46e2"), ExtResource("2_skokn"), ExtResource("2_aup3k"), ExtResource("2_nufwe")])
+Levels = Array[PackedScene]([ExtResource("2_lepaq"), ExtResource("2_873oc"), ExtResource("5_u46e2"), ExtResource("2_skokn"), ExtResource("2_aup3k"), ExtResource("2_nufwe")])
 titleLabel = NodePath("TitleLabel")
 
 [node name="Background" type="Sprite2D" parent="."]

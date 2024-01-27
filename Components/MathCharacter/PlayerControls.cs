@@ -11,6 +11,8 @@ public partial class PlayerControls : Node2D
 	float speed = 0.01f;
 	[Export]
 	Node2D armEnd;
+	
+	float joystickSensitivity = 100;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -33,8 +35,14 @@ public partial class PlayerControls : Node2D
 
 		if(Input.IsActionJustPressed(action)){
 			this.Position = armEnd.Position;
-		}	
+		}
 
+			var velocity = Input.GetVector("move_left", "move_right", "move_up", "move_down");
+			velocity = velocity*velocity.Abs();
+			GD.Print(velocity);
+			if(Input.IsActionPressed(action)){
+				this.Position += velocity*joystickSensitivity;	
+			}
 		
 
 

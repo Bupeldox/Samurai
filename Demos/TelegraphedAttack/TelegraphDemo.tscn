@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bykckjyph3ljq"]
 
-[ext_resource type="Script" path="res://Components/TelegraphedAttack.cs" id="1_jtwve"]
+[ext_resource type="Script" path="res://Components/TelegraphAttack/TelegraphedAttack.cs" id="1_jtwve"]
 [ext_resource type="Script" path="res://Demos/TelegraphedAttack/DemoDamaged.cs" id="3_sray4"]
 
 [sub_resource type="Animation" id="Animation_gxwd1"]

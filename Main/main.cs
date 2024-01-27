@@ -22,7 +22,8 @@ public partial class main : Node2D
 
 	private void LoadScene(int index){
 
-		index = index%(Levels.Count()-1);//loop
+		//positive mod pls
+		index = (index+(Levels.Count()-1))%(Levels.Count()-1);//loop
 
 
 		if(loadedScene!=null){

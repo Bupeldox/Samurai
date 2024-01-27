@@ -16,6 +16,13 @@ public partial class Limb : Node2D
 	Node2D toNode,elbowNode,endNode,shoulderMinNode,startNode,rootNode;
 	[Export]
 	Node2D exportArmPos;
+
+	[ExportGroup("Limits")]
+	[Export]
+	Node2D Limit1,Limit2;
+	//if it doesn't work, swap the positions of these nodes.
+
+	bool invertLimit = true;//only works if this is true
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -38,6 +45,9 @@ public partial class Limb : Node2D
 		var lerpAmount = 1-(Mathf.Min(shoulderThreshold,(start-target).Length())/shoulderThreshold);
 		return stoStartLerp.Lerp(shoulderMin,lerpAmount);
 	}
+
+
+
 	private void updateJointPositions(){
 
 		if(toNode==null||elbowNode==null||endNode==null||shoulderMinNode==null||startNode==null){
@@ -76,9 +86,51 @@ public partial class Limb : Node2D
 			
 		}
 
+		var relElbow =elbowPos-start;
+		if(Limit1!=null && Limit2!=null){
+			//first arm segment limits
+			var minAnglePos = Limit1.Position;
+			var maxAnglePos = Limit2.Position;
+		
+			
+
+			
+			//outside of bounds
+			//xor is like invert if one of them is true
+			if(invertLimit ^ (relElbow.AngleTo(minAnglePos)<0 && relElbow.AngleTo(maxAnglePos)>0)){
+				//find closest
+				if(Math.Abs(relElbow.AngleTo(minAnglePos))>Math.Abs(relElbow.AngleTo(maxAnglePos))){
+					relElbow = maxAnglePos.Normalized()*length1;
+				}else{
+					relElbow = minAnglePos.Normalized()*length1;
+				}
+				elbowPos = relElbow+start;
+			}
+		}
+
 		var elbowToTarget = target-elbowPos;
 
+		if(Limit1!=null && Limit2!=null){
+			//second arm segment limits
+			float maxAngle = 2f*(3.1416f)/3f;
+			var elbowAngle = relElbow.AngleTo(elbowToTarget);
+			if(Math.Abs(elbowAngle)>maxAngle){
+				
+				elbowToTarget = relElbow.Rotated((isKneeReversed?1:-1)*maxAngle);//its normalised and stuff afterwards.
+			}
+			if(isKneeReversed^elbowAngle>0){
+				elbowToTarget = relElbow;//its normalised and stuff afterwards.
+			}
+
+		}
 		var endPos = (elbowToTarget.Normalized()*length2)+elbowPos;
+
+
+
+
+
+
+
 		if(exportArmPos!=null){
 			exportArmPos.Position = endPos;
 		}

@@ -10,30 +10,29 @@
 radius = 113.328
 height = 616.866
 
-[node name="Limb" type="Node2D" node_paths=PackedStringArray("toNode", "elbowNode", "endNode", "shoulderMinNode", "startNode", "rootNode")]
+[node name="Limb" type="Node2D" node_paths=PackedStringArray("toNode", "elbowNode", "endNode", "shoulderMinNode", "startNode", "rootNode", "Limit1", "Limit2")]
 script = ExtResource("1_drpl6")
 length1 = 150.0
 length2 = 150.0
-toNode = NodePath("TargetPlaceholder")
+toNode = NodePath("Placeholders/TargetPlaceholder")
 elbowNode = NodePath("Elbow")
 endNode = NodePath("End")
 shoulderMinNode = NodePath("MinShoulder")
 startNode = NodePath("Shoulder")
 rootNode = NodePath("Root")
+Limit1 = NodePath("Placeholders/Limit1")
+Limit2 = NodePath("Placeholders/Limit2")
 
 [node name="Root" type="Node2D" parent="."]
 
 [node name="Shoulder" type="Node2D" parent="."]
-position = Vector2(30.5, 3.4)
-
-[node name="TargetPlaceholder" type="Node2D" parent="."]
-position = Vector2(305, 34)
+position = Vector2(13.8, -10.8)
 
 [node name="End" type="Node2D" parent="."]
-position = Vector2(305, 34)
+position = Vector2(138, -108)
 
 [node name="Elbow" type="Node2D" parent="."]
-position = Vector2(161.263, 76.8916)
+position = Vector2(154.541, 41.0852)
 scale = Vector2(44, 44)
 
 [node name="MinShoulder" type="Node2D" parent="."]
@@ -42,8 +41,8 @@ position = Vector2(-70, 24)
 [node name="Inbetweeners" type="Node2D" parent="."]
 
 [node name="Limb1" type="Node2D" parent="Inbetweeners" node_paths=PackedStringArray("nodeFrom", "nodeTo")]
-position = Vector2(95.8815, 40.1458)
-rotation = 0.512026
+position = Vector2(84.1703, 15.1426)
+rotation = 0.3532
 scale = Vector2(0.3, 0.3)
 script = ExtResource("2_tco3k")
 nodeFrom = NodePath("../../Elbow")
@@ -56,18 +55,19 @@ rotation = 1.86608
 scale = Vector2(1.944, -1.944)
 texture = ExtResource("4_u8d0v")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Inbetweeners/Limb1"]
+[node name="PhysicsBody2D" type="StaticBody2D" parent="Inbetweeners/Limb1"]
 script = ExtResource("4_tyy86")
+metadata/Damageable = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inbetweeners/Limb1/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inbetweeners/Limb1/PhysicsBody2D"]
 position = Vector2(3.79712, 0.674393)
 rotation = -1.57299
 shape = SubResource("CapsuleShape2D_f46pt")
 debug_color = Color(0, 0.721569, 0.843137, 0.0745098)
 
 [node name="Limb2" type="Node2D" parent="Inbetweeners" node_paths=PackedStringArray("nodeFrom", "nodeTo")]
-position = Vector2(233.132, 55.4458)
-rotation = -0.289992
+position = Vector2(146.27, -33.4574)
+rotation = -1.68129
 scale = Vector2(0.3, 0.3)
 script = ExtResource("2_tco3k")
 nodeFrom = NodePath("../../End")
@@ -82,9 +82,21 @@ texture = ExtResource("5_5iydi")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Inbetweeners/Limb2"]
 script = ExtResource("4_tyy86")
+metadata/Damageable = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inbetweeners/Limb2/StaticBody2D"]
 position = Vector2(3.79712, 0.674377)
 rotation = -1.57299
 shape = SubResource("CapsuleShape2D_f46pt")
 debug_color = Color(0, 0.6, 0.701961, 0.113725)
+
+[node name="Placeholders" type="Node2D" parent="."]
+
+[node name="TargetPlaceholder" type="Node2D" parent="Placeholders"]
+position = Vector2(138, -108)
+
+[node name="Limit1" type="Node2D" parent="Placeholders"]
+position = Vector2(34, -162)
+
+[node name="Limit2" type="Node2D" parent="Placeholders"]
+position = Vector2(78, 76)
