@@ -29,4 +29,3 @@ lifetime = 2.0
 one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
-trail_lifetime = 0.01
