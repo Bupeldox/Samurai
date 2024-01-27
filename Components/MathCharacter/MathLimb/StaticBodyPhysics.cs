@@ -36,7 +36,6 @@ public partial class StaticBodyPhysics : StaticBody2D
 
 		if(debugVel<deltaR){
 			debugVel = deltaR;
-			GD.Print(debugVel);
 		}
 
 		detlaP = detlaP.Normalized()* (Mathf.Min(detlaP.Length(),maxVelocity));

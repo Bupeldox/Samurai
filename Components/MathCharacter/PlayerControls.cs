@@ -39,7 +39,7 @@ public partial class PlayerControls : Node2D
 
 			var velocity = Input.GetVector("move_left", "move_right", "move_up", "move_down");
 			velocity = velocity*velocity.Abs();
-			GD.Print(velocity);
+			
 			if(Input.IsActionPressed(action)){
 				this.Position += velocity*joystickSensitivity;	
 			}
