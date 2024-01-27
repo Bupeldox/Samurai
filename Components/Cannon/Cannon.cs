@@ -19,7 +19,7 @@ public partial class Cannon : Node2D
 		try{
 			var  n = ammo.Instantiate();
 			AddChild(n);
-			var rb = n.GetNode<RigidBody2D>("RigidBody2D");
+			RigidBody2D rb = (RigidBody2D)n;
 			rb.ApplyCentralForce(aim.Position*forceMult);
 		}
 		catch(Exception ex){

@@ -1,12 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://optsni8himyf"]
+[gd_scene load_steps=7 format=3 uid="uid://optsni8himyf"]
 
 [ext_resource type="PackedScene" uid="uid://clmvkvikde70o" path="res://Components/character_placeholder.tscn" id="1_0pv1d"]
+[ext_resource type="PackedScene" uid="uid://wt2rxg5f0vlt" path="res://Components/RigidBodyPickUp/RigidBodyPickUp.tscn" id="2_a3bvt"]
 [ext_resource type="Texture2D" uid="uid://c2lvrx1od5n4f" path="res://Assets/Paperwork.png" id="2_n8h7a"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p2gg6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nurhp"]
 size = Vector2(83, 154)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pr5c"]
+size = Vector2(119, 85)
 
 [node name="KickingThroughAWall" type="Node2D"]
 
@@ -66,3 +70,10 @@ shape = SubResource("RectangleShape2D_nurhp")
 [node name="Paperwork" type="Sprite2D" parent="RigidBody2D4"]
 scale = Vector2(0.719729, 0.719729)
 texture = ExtResource("2_n8h7a")
+
+[node name="RigidBodyPickUp" parent="." instance=ExtResource("2_a3bvt")]
+position = Vector2(1277, 603)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBodyPickUp"]
+position = Vector2(-6.5, 32.5)
+shape = SubResource("RectangleShape2D_2pr5c")

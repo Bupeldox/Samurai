@@ -8,20 +8,18 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_myxqq"]
 radius = 78.0256
 
-[node name="RigidBodyPickUp" type="Node2D"]
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="RigidBody2D" type="RigidBody2D"]
 script = ExtResource("1_y53ei")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_myxqq")
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -1)
 scale = Vector2(0.743119, 0.743119)
 texture = ExtResource("1_n7row")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="RigidBody2D"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
 process_material = ExtResource("3_blipi")
 texture = ExtResource("3_oskcs")
@@ -29,3 +27,4 @@ lifetime = 2.0
 one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
+visibility_rect = Rect2(-1000, -1000, 2000, 2000)

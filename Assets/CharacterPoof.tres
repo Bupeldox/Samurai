@@ -1,4 +1,11 @@
-[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://nbtx5moghgpi"]
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://nbtx5moghgpi"]
+
+[sub_resource type="Curve" id="Curve_gv48n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0692841), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_asdyc"]
+curve = SubResource("Curve_gv48n")
 
 [resource]
 particle_flag_disable_z = true
@@ -8,5 +15,7 @@ spread = 180.0
 initial_velocity_min = 369.19
 initial_velocity_max = 381.2
 gravity = Vector3(0, 2, 0)
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_asdyc")
 turbulence_noise_strength = 20.0
 turbulence_noise_scale = 8.009

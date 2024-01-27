@@ -33,12 +33,12 @@ _data = {
 position = Vector2(1001, 490)
 
 [node name="Cannon" parent="." instance=ExtResource("4_2we85")]
-position = Vector2(317, 944)
+position = Vector2(0, 1043)
 ammo = ExtResource("3_h3o0t")
 forceMult = 100.0
 
 [node name="Aim" type="Node2D" parent="Cannon"]
-position = Vector2(268, -468)
+position = Vector2(522, -811)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cannon"]
 libraries = {

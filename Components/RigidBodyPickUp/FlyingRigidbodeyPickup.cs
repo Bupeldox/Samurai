@@ -34,7 +34,7 @@ public partial class FlyingRigidbodeyPickup : RigidBody2D
 	public override void _Ready()
 	{
 		ContactMonitor = true;
-		MaxContactsReported = 5;
+		MaxContactsReported = 20;
 		pop = GetNode<GpuParticles2D>("GPUParticles2D");
 		pop.Emitting = false;
 		sprite = GetNode<Sprite2D>("Sprite2D");
@@ -54,7 +54,9 @@ public partial class FlyingRigidbodeyPickup : RigidBody2D
 		if(hasHit){return;}
 
 		if(this.Position.X > 1000){
-			QueueFree();
+			if(removeTimer==null){
+				removeTimer = new TimeOutThing(5,()=>{QueueFree();return false;});
+			}
 			return;
 		}
 

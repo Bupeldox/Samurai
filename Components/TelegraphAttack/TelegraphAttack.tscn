@@ -7,16 +7,6 @@
 [node name="TelegraphAttack" type="Area2D"]
 script = ExtResource("1_iho4e")
 
-[node name="Polygon2D(placeholder)" type="Polygon2D" parent="."]
-visible = false
-position = Vector2(56.3, -87.7)
-polygon = PackedVector2Array(-99, -110, -189, -151, -3, 299, 87, 321)
-
-[node name="CollisionPolygon2D(placeholder)" type="CollisionPolygon2D" parent="."]
-visible = false
-position = Vector2(56.3, -87.7)
-polygon = PackedVector2Array(-167, -119, 7, 285, 64, 302, -111, -101)
-
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
 process_material = ExtResource("2_j3y2y")
@@ -25,4 +15,3 @@ lifetime = 2.0
 one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
-trail_lifetime = 0.01
