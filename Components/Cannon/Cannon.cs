@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Cannon : Node2D
+public partial class Cannon : Node2D, IAttackable
 {
 	[Export]
 	PackedScene ammo;
@@ -15,7 +15,7 @@ public partial class Cannon : Node2D
 		aim = GetNode<Node2D>("Aim");
 	}
 
-	public void FIRE(){
+	public void ATTACK(){
 		try{
 			var  n = ammo.Instantiate();
 			AddChild(n);

@@ -23,10 +23,10 @@ public partial class Cutscene : Node2D
 		images.ForEach(i=>i.Visible = false);
 		background.Visible = false;
 		background.ZIndex = 1;
-		Start();
+		//STARTCUTSCENE();
 	}
 	bool going = false;
-	public void Start(){
+	public void STARTCUTSCENE(){
 		Visible=true;
 		going = true;
 		timer = 0;

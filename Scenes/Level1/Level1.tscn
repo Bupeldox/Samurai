@@ -1,0 +1,176 @@
+[gd_scene load_steps=13 format=3 uid="uid://q63rfcg5ifbs"]
+
+[ext_resource type="Script" path="res://Scenes/Level1/LevelController.cs" id="1_0enf7"]
+[ext_resource type="PackedScene" uid="uid://yg23xjf6tq46" path="res://Components/MathCharacter/MathCharacter.tscn" id="1_kvkux"]
+[ext_resource type="PackedScene" uid="uid://wnqdbc0e7yr5" path="res://Components/Cannon/Cannon.tscn" id="2_x1f6v"]
+[ext_resource type="PackedScene" uid="uid://knuuo4vopqqt" path="res://Components/TelegraphAttack/TelegraphAttack.tscn" id="3_5kq6p"]
+[ext_resource type="Script" path="res://Scenes/Level1/AttackContainer.cs" id="3_msowu"]
+[ext_resource type="PackedScene" uid="uid://wt2rxg5f0vlt" path="res://Components/RigidBodyPickUp/RigidBodyPickUp.tscn" id="4_b2sdg"]
+[ext_resource type="PackedScene" uid="uid://dmusvdcl74m6q" path="res://Components/Cutscene/Cutscene.tscn" id="5_8i6nx"]
+[ext_resource type="Texture2D" uid="uid://bwgo5txiblb84" path="res://Assets/Cutscene/Cutscene3.png" id="6_2ao5a"]
+[ext_resource type="Texture2D" uid="uid://blq5eedddlpe8" path="res://Assets/Cutscene/Cutscene2.png" id="7_1757p"]
+[ext_resource type="Texture2D" uid="uid://cgsl7dsywkya1" path="res://Assets/Cutscene/Cutscene.png" id="8_v1ne2"]
+
+[sub_resource type="Animation" id="Animation_uc5px"]
+resource_name = "new_animation"
+length = 10.0
+step = 1.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CannonContainer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 3, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [0],
+"method": &"ATTACKW"
+}, {
+"args": [1],
+"method": &"ATTACKW"
+}, {
+"args": [0],
+"method": &"ATTACKW"
+}, {
+"args": [2],
+"method": &"ATTACKW"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TelegraphAttacks")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [0],
+"method": &"ATTACKW"
+}, {
+"args": [1],
+"method": &"ATTACKW"
+}, {
+"args": [0],
+"method": &"ATTACKW"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w1opx"]
+_data = {
+"new_animation": SubResource("Animation_uc5px")
+}
+
+[node name="Thing" type="Node2D"]
+script = ExtResource("1_0enf7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w1opx")
+}
+autoplay = "new_animation"
+
+[node name="Character" parent="." instance=ExtResource("1_kvkux")]
+position = Vector2(950, 493)
+
+[node name="CannonContainer" type="Node2D" parent="."]
+script = ExtResource("3_msowu")
+
+[node name="Cannon" parent="CannonContainer" instance=ExtResource("2_x1f6v")]
+position = Vector2(641, 1159)
+ammo = ExtResource("4_b2sdg")
+forceMult = 100.0
+
+[node name="Aim" type="Node2D" parent="CannonContainer/Cannon"]
+position = Vector2(-77, -897)
+
+[node name="Cannon2" parent="CannonContainer" instance=ExtResource("2_x1f6v")]
+position = Vector2(1975, 1032)
+ammo = ExtResource("4_b2sdg")
+forceMult = 100.0
+
+[node name="Aim" type="Node2D" parent="CannonContainer/Cannon2"]
+position = Vector2(-563, -911)
+
+[node name="Cannon3" parent="CannonContainer" instance=ExtResource("2_x1f6v")]
+position = Vector2(1953, 1314)
+ammo = ExtResource("4_b2sdg")
+forceMult = 100.0
+
+[node name="Aim" type="Node2D" parent="CannonContainer/Cannon3"]
+position = Vector2(-144, -962)
+
+[node name="CannonContainer" type="Node2D" parent="CannonContainer"]
+script = ExtResource("3_msowu")
+
+[node name="Cannon" parent="CannonContainer/CannonContainer" instance=ExtResource("2_x1f6v")]
+position = Vector2(641, 1159)
+ammo = ExtResource("4_b2sdg")
+forceMult = 100.0
+
+[node name="Aim" type="Node2D" parent="CannonContainer/CannonContainer/Cannon"]
+position = Vector2(-77, -897)
+
+[node name="Cannon2" parent="CannonContainer/CannonContainer" instance=ExtResource("2_x1f6v")]
+position = Vector2(1975, 1032)
+ammo = ExtResource("4_b2sdg")
+forceMult = 100.0
+
+[node name="Aim" type="Node2D" parent="CannonContainer/CannonContainer/Cannon2"]
+position = Vector2(-563, -911)
+
+[node name="Cannon3" parent="CannonContainer/CannonContainer" instance=ExtResource("2_x1f6v")]
+position = Vector2(1953, 1314)
+ammo = ExtResource("4_b2sdg")
+forceMult = 100.0
+
+[node name="Aim" type="Node2D" parent="CannonContainer/CannonContainer/Cannon3"]
+position = Vector2(-144, -962)
+
+[node name="TelegraphAttacks" type="Node2D" parent="."]
+script = ExtResource("3_msowu")
+
+[node name="TelegraphAttack" parent="TelegraphAttacks" instance=ExtResource("3_5kq6p")]
+position = Vector2(629, 686)
+
+[node name="Polygon2D" type="Polygon2D" parent="TelegraphAttacks/TelegraphAttack"]
+polygon = PackedVector2Array(10, -329, 223, -488, 186, -248, -36, 198, -187, 333, -192, 120)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TelegraphAttacks/TelegraphAttack"]
+polygon = PackedVector2Array(168, -260, 192, -436, 49, -318, -167, 128, -171, 297, -51, 178)
+
+[node name="TelegraphAttack2" parent="TelegraphAttacks" instance=ExtResource("3_5kq6p")]
+position = Vector2(1253, 874)
+rotation = 0.401134
+
+[node name="Polygon2D" type="Polygon2D" parent="TelegraphAttacks/TelegraphAttack2"]
+polygon = PackedVector2Array(-53.4326, -177.203, 147.996, -352.792, 398.839, -329.921, 481.258, -179.133, 291.309, -158.312, 79.6782, -63.122, -35.9143, 122.769, -187, 333, -192.746, 101.302)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TelegraphAttacks/TelegraphAttack2"]
+polygon = PackedVector2Array(52.7043, -83.1821, 277.335, -178.455, 436.012, -193.616, 386.534, -305.15, 166.043, -333.291, -33.8774, -174.635, -167.807, 103.759, -171, 297, -71.0089, 132.222)
+
+[node name="Cutscene" parent="." instance=ExtResource("5_8i6nx")]
+visible = false
+
+[node name="Cutscene3" type="Sprite2D" parent="Cutscene"]
+visible = false
+position = Vector2(968, 543)
+scale = Vector2(0.942515, 0.942515)
+texture = ExtResource("6_2ao5a")
+
+[node name="Cutscene2" type="Sprite2D" parent="Cutscene"]
+visible = false
+position = Vector2(968, 547)
+scale = Vector2(0.954528, 0.954528)
+texture = ExtResource("7_1757p")
+
+[node name="Cutscene4" type="Sprite2D" parent="Cutscene"]
+position = Vector2(961, 539)
+scale = Vector2(1.03152, 1.03152)
+texture = ExtResource("8_v1ne2")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="CutsceneComplete" from="Cutscene" to="." method="_handle_cutscene_end"]

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-public partial class TelegraphedAttack : Area2D
+public partial class TelegraphedAttack : Area2D, IAttackable
 {
 	[Export]
 	float telegraphTime = 3f;
@@ -25,9 +25,9 @@ public partial class TelegraphedAttack : Area2D
 		particles = GetNode<GpuParticles2D>("GPUParticles2D");
 	}
 
-	public void StartAttack(){
+	public void ATTACK(){
 		isGoing = true;
-		polygon.Color = new Color("#00448833");
+		polygon.Color = new Color("#f5212233");
 	}
 
 	float telegraphOnOffTime = 0;
@@ -40,11 +40,11 @@ public partial class TelegraphedAttack : Area2D
 
 			if(telegraphFlashOn){
 				GD.Print("TelegraphHigh");
-				polygon.Color = new Color("#0088ff88");
+				polygon.Color = new Color("#f5212293");
 
 			} else {
 				GD.Print("TelegraphOff");
-				polygon.Color = new Color("#00448833");
+				polygon.Color = new Color("#f5212233");
 			}
 		}
 	}
