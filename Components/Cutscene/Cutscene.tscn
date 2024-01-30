@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmusvdcl74m6q"]
+
+[ext_resource type="Script" path="res://Components/Cutscene/Cutscene.cs" id="1_31ltw"]
+
+[sub_resource type="Gradient" id="Gradient_fq3uc"]
+colors = PackedColorArray(0.0856224, 0.0678918, 0.0601495, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qrn04"]
+gradient = SubResource("Gradient_fq3uc")
+width = 1
+
+[node name="Cutscene" type="Node2D"]
+script = ExtResource("1_31ltw")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.533333, 0.403922, 0.247059, 1)
+position = Vector2(994, 547)
+scale = Vector2(2629.48, 1472.91)
+texture = SubResource("GradientTexture1D_qrn04")

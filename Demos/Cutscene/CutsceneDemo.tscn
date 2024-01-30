@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddjwqm5g373q1"]
+
+[ext_resource type="PackedScene" uid="uid://dmusvdcl74m6q" path="res://Components/Cutscene/Cutscene.tscn" id="1_fkbio"]
+[ext_resource type="Texture2D" uid="uid://blq5eedddlpe8" path="res://Assets/Cutscene/Cutscene2.png" id="2_4s2vf"]
+[ext_resource type="Texture2D" uid="uid://bwgo5txiblb84" path="res://Assets/Cutscene/Cutscene3.png" id="3_6d28m"]
+[ext_resource type="Texture2D" uid="uid://cgsl7dsywkya1" path="res://Assets/Cutscene/Cutscene.png" id="4_2ovde"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nmwkd"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="CutsceneDemo" type="Node2D"]
+
+[node name="Cutscene" parent="." instance=ExtResource("1_fkbio")]
+visible = false
+position = Vector2(7, 7)
+
+[node name="Cutscene3" type="Sprite2D" parent="Cutscene"]
+position = Vector2(962, 533)
+scale = Vector2(0.942772, 0.942772)
+texture = ExtResource("3_6d28m")
+
+[node name="Cutscene2" type="Sprite2D" parent="Cutscene"]
+visible = false
+position = Vector2(971.5, 520)
+texture = ExtResource("2_4s2vf")
+
+[node name="Cutscene4" type="Sprite2D" parent="Cutscene"]
+visible = false
+position = Vector2(956, 536)
+scale = Vector2(1.05217, 1.05217)
+texture = ExtResource("4_2ovde")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 711.0
+offset_top = 96.0
+offset_right = 1227.0
+offset_bottom = 204.0
+text = "Scenes go from top to bottom of its children. 
+The background sorts it's self out.
+The cutscene can be hidden in the inspector.
+There is a signal when it's done.
+"
+label_settings = SubResource("LabelSettings_nmwkd")
