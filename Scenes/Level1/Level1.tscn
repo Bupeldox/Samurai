@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://q63rfcg5ifbs"]
+[gd_scene load_steps=18 format=3 uid="uid://q63rfcg5ifbs"]
 
 [ext_resource type="Script" path="res://Components/LevelController.cs" id="1_0enf7"]
 [ext_resource type="PackedScene" uid="uid://yg23xjf6tq46" path="res://Components/MathCharacter/MathCharacter.tscn" id="1_kvkux"]
+[ext_resource type="Texture2D" uid="uid://cbcgpavqu7ygt" path="res://Scenes/World/background.png" id="2_vrrf4"]
 [ext_resource type="PackedScene" uid="uid://wnqdbc0e7yr5" path="res://Components/Cannon/Cannon.tscn" id="2_x1f6v"]
+[ext_resource type="Texture2D" uid="uid://tw1d1fkbyivi" path="res://Assets/controls.png" id="3_4wweo"]
 [ext_resource type="PackedScene" uid="uid://knuuo4vopqqt" path="res://Components/TelegraphAttack/TelegraphAttack.tscn" id="3_5kq6p"]
 [ext_resource type="Script" path="res://Components/AttackContainer.cs" id="3_s5cx6"]
 [ext_resource type="PackedScene" uid="uid://wt2rxg5f0vlt" path="res://Components/RigidBodyPickUp/RigidBodyPickUp.tscn" id="4_b2sdg"]
@@ -69,6 +71,19 @@ _data = {
 
 [node name="Thing" type="Node2D"]
 script = ExtResource("1_0enf7")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(947, 535)
+scale = Vector2(1.08379, 1.08379)
+texture = ExtResource("2_vrrf4")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(325, 305)
+rotation = -0.449729
+scale = Vector2(0.322162, 0.322162)
+texture = ExtResource("3_4wweo")
+polygon = PackedVector2Array(-326.576, -123.177, 249.552, -124.256, 252.354, 77.0085, -312.207, 111.245)
+uv = PackedVector2Array(2.63156, 55.2632, 914.474, 18.4211, 923.684, 403.947, 10.5263, 447.368)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

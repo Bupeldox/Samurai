@@ -9,8 +9,6 @@ public partial class main : Node2D
 	[Export]
 	PackedScene[] Levels;
 	
-	[Export]
-	Label titleLabel;
 
 	Node loadedScene;
 	int currentSceneIndex = 0;
@@ -42,7 +40,6 @@ public partial class main : Node2D
 		if(ins is LevelController){
 			((LevelController)ins).mainNode = this;
 		}
-		titleLabel.Text = "Title: "+Levels[index].ResourcePath;
 
 		loadedScene = ins;
 		currentSceneIndex = index;

@@ -34,69 +34,25 @@ tracks/0/keys = {
 "method": &"play"
 }]
 }
-tracks/1/type = "bezier"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Controls:modulate:r")
+tracks/1/path = NodePath("Controls:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(56.1, 57.1)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Controls:modulate:g")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(56.1, 57.1)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Controls:modulate:b")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(56.1, 57.1)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Controls:modulate:a")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(56.1, 57.1)
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Controls:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(5, 7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(960, 257), Vector2(223, 118)]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Controls:scale")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Controls:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(5, 7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -105,50 +61,6 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_q04ue"]
 length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Controls:modulate:r")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Controls:modulate:g")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Controls:modulate:b")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Controls:modulate:a")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ox3mh"]
 _data = {
@@ -313,6 +225,7 @@ texture = ExtResource("2_j7cod")
 libraries = {
 "": SubResource("AnimationLibrary_ox3mh")
 }
+autoplay = "new_animation2"
 
 [node name="CannonTutorial" type="AnimationPlayer" parent="."]
 libraries = {
@@ -323,7 +236,6 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_00fui")
 }
-autoplay = "new_animation"
 
 [node name="Character" parent="." instance=ExtResource("2_m1gfm")]
 position = Vector2(950, 504)
@@ -426,6 +338,10 @@ polygon = PackedVector2Array(-46, -498, 49, -375, 104, -148, 81, 53, -142, 115, 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TelegraphAttacks/TelegraphAttack4"]
 polygon = PackedVector2Array(72, 42, 92, -152, 41, -374, -62, -496, -179, -608, -17, -325, 1, -20, -113, 99)
 
+[node name="Controls" type="Sprite2D" parent="."]
+position = Vector2(960, 257)
+texture = ExtResource("14_jdiwf")
+
 [node name="Cutscene" parent="." instance=ExtResource("7_ivkss")]
 visible = false
 
@@ -462,12 +378,6 @@ panning_strength = 0.0
 [node name="Heavier" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("13_cftsj")
 panning_strength = 0.0
-
-[node name="Controls" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(223, 118)
-scale = Vector2(0.400115, 0.400115)
-texture = ExtResource("14_jdiwf")
 
 [connection signal="animation_finished" from="AreaTutorial" to="." method="_on_animation_player_animation_finished"]
 [connection signal="CutsceneComplete" from="Cutscene" to="." method="_handle_cutscene_end"]
