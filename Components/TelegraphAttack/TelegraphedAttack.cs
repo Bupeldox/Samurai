@@ -17,12 +17,30 @@ public partial class TelegraphedAttack : Area2D, IAttackable
 	float attackHoldTime = 1f;
 	Polygon2D polygon;
 	GpuParticles2D particles;
+	CollisionPolygon2D collisionPolygon;
+
+	//List<RayCast2D> rays;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		polygon = GetNode<Polygon2D>("Polygon2D");
 		particles = GetNode<GpuParticles2D>("GPUParticles2D");
+		collisionPolygon = GetNode<CollisionPolygon2D>("CollisionPolygon2D");
+
+		var thing = collisionPolygon.Polygon;
+
+		// for(var i=1;i<thing.Length;i++){
+		// 	var to = thing[i-1];
+		// 	var from = thing[i];
+
+		// 	var ray = new RayCast2D();
+		// 	this.AddChild(ray);
+		// 	ray.Position = from;
+		// 	ray.TargetPosition = to;
+		// 	rays.Add(ray);
+		// }
+
 	}
 
 	public void ATTACK(){
@@ -90,6 +108,11 @@ public partial class TelegraphedAttack : Area2D, IAttackable
 
 	}
 	
+
+	// private List<Node2D> getOverlappingBodiesWithRays(){
+	// 	rays.
+	// }
+
 	bool hasHit = false;
 	private void doAttack(){
 		
@@ -99,6 +122,7 @@ public partial class TelegraphedAttack : Area2D, IAttackable
 			}
 
 			var bods = GetOverlappingBodies();
+			//getOverlappingBodiesWithRays();//;
 
 			var damageable = bods.FirstOrDefault(i=>
 				i.HasMeta("Damageable") && 
