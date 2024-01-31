@@ -10,13 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://wt2rxg5f0vlt" path="res://Components/RigidBodyPickUp/RigidBodyPickUp.tscn" id="4_b2sdg"]
 [ext_resource type="PackedScene" uid="uid://dmusvdcl74m6q" path="res://Components/Cutscene/Cutscene.tscn" id="5_8i6nx"]
 [ext_resource type="Texture2D" uid="uid://bwgo5txiblb84" path="res://Assets/Cutscene/Cutscene3.png" id="6_2ao5a"]
-[ext_resource type="Texture2D" uid="uid://blq5eedddlpe8" path="res://Assets/Cutscene/Cutscene2.png" id="7_1757p"]
 [ext_resource type="Texture2D" uid="uid://cgsl7dsywkya1" path="res://Assets/Cutscene/Cutscene.png" id="8_v1ne2"]
+[ext_resource type="Texture2D" uid="uid://dnu370kd0awuv" path="res://Assets/Cutscene/Cutscene4.png" id="11_ikf3b"]
 
 [sub_resource type="Animation" id="Animation_uc5px"]
 resource_name = "new_animation"
-length = 10.0
-step = 1.16
+length = 42.0
+step = 0.29
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -24,20 +24,77 @@ tracks/0/path = NodePath("CannonContainer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1.16, 3.48, 4.64, 6.96),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(2.32, 4.64, 5.8, 8.12, 11.6, 16.82, 17.98, 30.16, 30.74, 31.32, 31.9, 32.48, 33.06, 33.64, 34.22, 34.51, 35.09, 35.67, 36.25, 36.83, 37.41, 37.99, 38.57),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [0],
-"method": &"ATTACKW"
+"method": &"AW"
 }, {
 "args": [1],
-"method": &"ATTACKW"
+"method": &"AW"
 }, {
 "args": [0],
-"method": &"ATTACKW"
+"method": &"AW"
 }, {
 "args": [2],
-"method": &"ATTACKW"
+"method": &"AW"
+}, {
+"args": [1],
+"method": &"AW"
+}, {
+"args": [0],
+"method": &"AW"
+}, {
+"args": [2],
+"method": &"AW"
+}, {
+"args": [2],
+"method": &"AW"
+}, {
+"args": [1],
+"method": &"AW"
+}, {
+"args": [0],
+"method": &"AW"
+}, {
+"args": [0],
+"method": &"AW"
+}, {
+"args": [1],
+"method": &"AW"
+}, {
+"args": [2],
+"method": &"AW"
+}, {
+"args": [0],
+"method": &"AW"
+}, {
+"args": [0],
+"method": &"AW"
+}, {
+"args": [2],
+"method": &"AW"
+}, {
+"args": [1],
+"method": &"AW"
+}, {
+"args": [0],
+"method": &"AW"
+}, {
+"args": [0],
+"method": &"AW"
+}, {
+"args": [1],
+"method": &"AW"
+}, {
+"args": [2],
+"method": &"AW"
+}, {
+"args": [0],
+"method": &"AW"
+}, {
+"args": [0],
+"method": &"AW"
 }]
 }
 tracks/1/type = "method"
@@ -47,17 +104,52 @@ tracks/1/path = NodePath("TelegraphAttacks")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3.48, 5.8),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(1.16, 4.64, 6.96, 33.35, 36.54),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "values": [{
 "args": [0],
-"method": &"ATTACKW"
+"method": &"AW"
 }, {
 "args": [1],
-"method": &"ATTACKW"
+"method": &"AW"
 }, {
 "args": [0],
-"method": &"ATTACKW"
+"method": &"AW"
+}, {
+"args": [1],
+"method": &"AW"
+}, {
+"args": [0],
+"method": &"AW"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("JigTelegraphs")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(12.76, 13.92, 20.88, 22.04, 26.68, 27.84),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [0],
+"method": &"AW"
+}, {
+"args": [1],
+"method": &"AW"
+}, {
+"args": [2],
+"method": &"AW"
+}, {
+"args": [3],
+"method": &"AW"
+}, {
+"args": [0],
+"method": &"AW"
+}, {
+"args": [1],
+"method": &"AW"
 }]
 }
 
@@ -92,6 +184,7 @@ autoplay = "new_animation"
 position = Vector2(950, 493)
 
 [node name="CannonContainer" type="Node2D" parent="."]
+visible = false
 script = ExtResource("3_s5cx6")
 
 [node name="Cannon" parent="CannonContainer" instance=ExtResource("2_x1f6v")]
@@ -118,33 +211,6 @@ forceMult = 100.0
 [node name="Aim" type="Node2D" parent="CannonContainer/Cannon3"]
 position = Vector2(-144, -962)
 
-[node name="CannonContainer" type="Node2D" parent="CannonContainer"]
-script = ExtResource("3_s5cx6")
-
-[node name="Cannon" parent="CannonContainer/CannonContainer" instance=ExtResource("2_x1f6v")]
-position = Vector2(641, 1159)
-ammo = ExtResource("4_b2sdg")
-forceMult = 100.0
-
-[node name="Aim" type="Node2D" parent="CannonContainer/CannonContainer/Cannon"]
-position = Vector2(-77, -897)
-
-[node name="Cannon2" parent="CannonContainer/CannonContainer" instance=ExtResource("2_x1f6v")]
-position = Vector2(1975, 1032)
-ammo = ExtResource("4_b2sdg")
-forceMult = 100.0
-
-[node name="Aim" type="Node2D" parent="CannonContainer/CannonContainer/Cannon2"]
-position = Vector2(-563, -911)
-
-[node name="Cannon3" parent="CannonContainer/CannonContainer" instance=ExtResource("2_x1f6v")]
-position = Vector2(1953, 1314)
-ammo = ExtResource("4_b2sdg")
-forceMult = 100.0
-
-[node name="Aim" type="Node2D" parent="CannonContainer/CannonContainer/Cannon3"]
-position = Vector2(-144, -962)
-
 [node name="TelegraphAttacks" type="Node2D" parent="."]
 script = ExtResource("3_s5cx6")
 
@@ -167,6 +233,60 @@ polygon = PackedVector2Array(-53.4326, -177.203, 147.996, -352.792, 398.839, -32
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TelegraphAttacks/TelegraphAttack2"]
 polygon = PackedVector2Array(52.7043, -83.1821, 277.335, -178.455, 436.012, -193.616, 386.534, -305.15, 166.043, -333.291, -33.8774, -174.635, -167.807, 103.759, -171, 297, -71.0089, 132.222)
 
+[node name="JigTelegraphs" type="Node2D" parent="."]
+visible = false
+script = ExtResource("3_s5cx6")
+
+[node name="TelegraphAttack3" parent="JigTelegraphs" instance=ExtResource("3_5kq6p")]
+position = Vector2(646, 685)
+telegraphTime = 4.0
+
+[node name="Polygon2D" type="Polygon2D" parent="JigTelegraphs/TelegraphAttack3"]
+position = Vector2(7, 1)
+polygon = PackedVector2Array(-90, -356, 125, -386, 204, -151, 211, 163, 180, 383, -8, 386)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="JigTelegraphs/TelegraphAttack3"]
+polygon = PackedVector2Array(190, -147, 121, -370, -57, -329, 9, 372, 168, 368, 206, 174)
+
+[node name="TelegraphAttack4" parent="JigTelegraphs" instance=ExtResource("3_5kq6p")]
+position = Vector2(1271, 682)
+rotation = 3.14159
+scale = Vector2(1, -1)
+telegraphTime = 4.0
+
+[node name="Polygon2D" type="Polygon2D" parent="JigTelegraphs/TelegraphAttack4"]
+position = Vector2(7, 1)
+polygon = PackedVector2Array(-90, -356, 125, -386, 204, -151, 211, 163, 180, 383, -8, 386)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="JigTelegraphs/TelegraphAttack4"]
+polygon = PackedVector2Array(190, -147, 121, -370, -57, -329, 9, 372, 168, 368, 206, 174)
+
+[node name="TelegraphAttack5" parent="JigTelegraphs" instance=ExtResource("3_5kq6p")]
+position = Vector2(973, 1086)
+rotation = -1.64933
+scale = Vector2(1, -1)
+telegraphTime = 5.0
+
+[node name="Polygon2D" type="Polygon2D" parent="JigTelegraphs/TelegraphAttack5"]
+position = Vector2(7, 1)
+polygon = PackedVector2Array(-90, -356, 125, -386, 204, -151, 211, 163, 180, 383, -8, 386)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="JigTelegraphs/TelegraphAttack5"]
+polygon = PackedVector2Array(190, -147, 121, -370, -57, -329, 9, 372, 168, 368, 206, 174)
+
+[node name="TelegraphAttack6" parent="JigTelegraphs" instance=ExtResource("3_5kq6p")]
+position = Vector2(924, 120)
+rotation = 1.43772
+scale = Vector2(1, -1)
+telegraphTime = 5.0
+
+[node name="Polygon2D" type="Polygon2D" parent="JigTelegraphs/TelegraphAttack6"]
+position = Vector2(3.36367, -12.5573)
+polygon = PackedVector2Array(-90, -356, 137.05, -385.593, 263.558, -586.152, 386.71, -759.021, 453.525, -621.672, 432.322, -350.46, 372.558, -148.747, 201.033, -112.589, 215.356, 107.456, 392.992, 132.024, 537.22, 318.617, 650.278, 817.951, 440.939, 708.762, 308.418, 404.656, -8, 386)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="JigTelegraphs/TelegraphAttack6"]
+polygon = PackedVector2Array(189.521, -129.289, 364.683, -169.889, 416.659, -354.417, 434.334, -546.46, 201.592, -423.492, 121, -370, -57, -329, 9, 372, 168, 368, 334.375, 379.994, 565.722, 495.318, 524.786, 310.112, 386.78, 130.838, 209.799, 105.093)
+
 [node name="Cutscene" parent="." instance=ExtResource("5_8i6nx")]
 visible = false
 
@@ -176,13 +296,14 @@ position = Vector2(968, 543)
 scale = Vector2(0.942515, 0.942515)
 texture = ExtResource("6_2ao5a")
 
-[node name="Cutscene2" type="Sprite2D" parent="Cutscene"]
+[node name="Cutscene5" type="Sprite2D" parent="Cutscene"]
 visible = false
-position = Vector2(968, 547)
-scale = Vector2(0.954528, 0.954528)
-texture = ExtResource("7_1757p")
+position = Vector2(965, 528)
+scale = Vector2(1.19626, 1.19626)
+texture = ExtResource("11_ikf3b")
 
 [node name="Cutscene4" type="Sprite2D" parent="Cutscene"]
+visible = false
 position = Vector2(961, 539)
 scale = Vector2(1.03152, 1.03152)
 texture = ExtResource("8_v1ne2")

@@ -12,7 +12,6 @@ public partial class main : Node2D
 
 	Node loadedScene;
 	int currentSceneIndex = 0;
-	List<Node> loadedLevels;
 	
 	[Export]
  	Fade fade;
@@ -26,14 +25,20 @@ public partial class main : Node2D
 
 	private void LoadScene(int index){
 		
+		
+
 		//positive mod pls
-		index = (index+(Levels.Count()-1))%(Levels.Count()-1);//loop
+		//index = (index+(Levels.Count()-1))%(Levels.Count()-1);//loop//
 		fade.FadeToBlack();
-		fade.FadeToNotBlack();
 
 		if(loadedScene!=null){
 			loadedScene.QueueFree();
 		}
+		if(index>=Levels.Count()){
+			return;
+		}
+		
+		fade.FadeToNotBlack();
 
 		var ins = Levels[index].Instantiate();
 		AddChild(ins);

@@ -15,9 +15,11 @@ public partial class Fade : Sprite2D
 	}
 
 	public void FadeToBlack(){
+		currentDarkness=0;
 		targetBlack = true;
 	}
 	public void FadeToNotBlack(){
+		currentDarkness=1;
 		targetBlack = false;
 	}
 	float fadeTime = 2f;
