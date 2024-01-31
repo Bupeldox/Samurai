@@ -19,7 +19,7 @@ public partial class AttackContainer : Node2D
 		attackables = GetChildren().Where(i=>i is IAttackable).Select(i=>(IAttackable)i).ToList(); 
 	}
 
-	public void ATTACKW(int index){
+	public void AW(int index){
 		attackables[index].ATTACK();
 	}
 

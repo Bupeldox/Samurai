@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://clbtg3mwlirjv"]
+[gd_scene load_steps=15 format=3 uid="uid://clbtg3mwlirjv"]
 
 [ext_resource type="Script" path="res://Main/main.cs" id="1_ins5k"]
+[ext_resource type="PackedScene" uid="uid://cuii7anhtnbby" path="res://Scenes/Tutorial/Tutorial.tscn" id="2_0rue4"]
 [ext_resource type="PackedScene" uid="uid://optsni8himyf" path="res://Demos/Kicking though a wall/KickingThroughAWall.tscn" id="2_873oc"]
 [ext_resource type="PackedScene" uid="uid://ds83fdn00drkq" path="res://Demos/MathPlayerCharacter/MathPlayerCharacterDemo.tscn" id="2_aup3k"]
 [ext_resource type="PackedScene" uid="uid://fx8qqqqu14ke" path="res://Demos/RigidBodeyPickups/RigidBodyInteractable.tscn" id="2_lepaq"]
@@ -10,11 +11,19 @@
 [ext_resource type="PackedScene" uid="uid://q63rfcg5ifbs" path="res://Scenes/Level1/Level1.tscn" id="2_x6yiq"]
 [ext_resource type="PackedScene" uid="uid://cvyrgswaqovro" path="res://Demos/AttacksAndCharacter/AttacksAndCharacter.tscn" id="5_u46e2"]
 [ext_resource type="Texture2D" uid="uid://cbcgpavqu7ygt" path="res://Scenes/World/background.png" id="6_idme4"]
+[ext_resource type="Script" path="res://Main/Fade.cs" id="12_u2rvl"]
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("titleLabel")]
+[sub_resource type="Gradient" id="Gradient_raqh2"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_087av"]
+gradient = SubResource("Gradient_raqh2")
+width = 1
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("titleLabel", "fade")]
 script = ExtResource("1_ins5k")
-Levels = Array[PackedScene]([ExtResource("2_x6yiq"), ExtResource("2_ore02"), ExtResource("2_lepaq"), ExtResource("2_873oc"), ExtResource("5_u46e2"), ExtResource("2_skokn"), ExtResource("2_aup3k"), ExtResource("2_nufwe")])
+Levels = Array[PackedScene]([ExtResource("2_0rue4"), ExtResource("2_x6yiq"), ExtResource("2_ore02"), ExtResource("2_lepaq"), ExtResource("2_873oc"), ExtResource("5_u46e2"), ExtResource("2_skokn"), ExtResource("2_aup3k"), ExtResource("2_nufwe")])
 titleLabel = NodePath("TitleLabel")
+fade = NodePath("Fade")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(944, 523)
@@ -36,3 +45,9 @@ offset_top = 9.0
 offset_right = 242.0
 offset_bottom = 84.0
 text = "Title:"
+
+[node name="Fade" type="Sprite2D" parent="."]
+position = Vector2(956, 539)
+scale = Vector2(2084.77, 1282.71)
+texture = SubResource("GradientTexture1D_087av")
+script = ExtResource("12_u2rvl")

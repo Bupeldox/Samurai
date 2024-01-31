@@ -1,0 +1,473 @@
+[gd_scene load_steps=23 format=3 uid="uid://cuii7anhtnbby"]
+
+[ext_resource type="Script" path="res://Components/LevelController.cs" id="1_j5o2k"]
+[ext_resource type="Texture2D" uid="uid://caf3crbrxyf5d" path="res://Assets/Tutorialbg.png" id="2_j7cod"]
+[ext_resource type="PackedScene" uid="uid://yg23xjf6tq46" path="res://Components/MathCharacter/MathCharacter.tscn" id="2_m1gfm"]
+[ext_resource type="Script" path="res://Components/AttackContainer.cs" id="3_lltr5"]
+[ext_resource type="PackedScene" uid="uid://wnqdbc0e7yr5" path="res://Components/Cannon/Cannon.tscn" id="4_7m6wa"]
+[ext_resource type="PackedScene" uid="uid://wt2rxg5f0vlt" path="res://Components/RigidBodyPickUp/RigidBodyPickUp.tscn" id="5_t0ocl"]
+[ext_resource type="PackedScene" uid="uid://knuuo4vopqqt" path="res://Components/TelegraphAttack/TelegraphAttack.tscn" id="6_lgc31"]
+[ext_resource type="PackedScene" uid="uid://dmusvdcl74m6q" path="res://Components/Cutscene/Cutscene.tscn" id="7_ivkss"]
+[ext_resource type="Texture2D" uid="uid://ba74iesnrtyc7" path="res://Assets/Cutscene/Cutscene6.png" id="9_pmh77"]
+[ext_resource type="Texture2D" uid="uid://blq5eedddlpe8" path="res://Assets/Cutscene/Cutscene2.png" id="9_pojck"]
+[ext_resource type="Texture2D" uid="uid://w4fg2sub7lw0" path="res://Assets/Cutscene/Cutscene5.png" id="10_uo58o"]
+[ext_resource type="Script" path="res://Components/SoundController.cs" id="11_52ls6"]
+[ext_resource type="AudioStream" uid="uid://ql3y4qm43vu4" path="res://Assets/Sound/Lighter.mp3" id="12_a1pc0"]
+[ext_resource type="AudioStream" uid="uid://bmt4m4ba1cvbt" path="res://Assets/Sound/Heavier.mp3" id="13_cftsj"]
+[ext_resource type="Texture2D" uid="uid://tw1d1fkbyivi" path="res://Assets/controls.png" id="14_jdiwf"]
+
+[sub_resource type="Animation" id="Animation_mhqwk"]
+resource_name = "new_animation2"
+length = 60.0
+step = 1.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CannonTutorial")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["new_animation"],
+"method": &"play"
+}]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Controls:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(56.1, 57.1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Controls:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(56.1, 57.1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Controls:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(56.1, 57.1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Controls:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(56.1, 57.1)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Controls:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(5, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 257), Vector2(223, 118)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Controls:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(5, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.400115, 0.400115)]
+}
+
+[sub_resource type="Animation" id="Animation_q04ue"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Controls:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Controls:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Controls:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Controls:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ox3mh"]
+_data = {
+"RESET": SubResource("Animation_q04ue"),
+"new_animation2": SubResource("Animation_mhqwk")
+}
+
+[sub_resource type="Animation" id="Animation_k5odl"]
+resource_name = "new_animation"
+length = 25.0
+step = 0.2903
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CannonContainer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.322, 4.644, 6.966, 9.2896, 9.5799, 11.612, 11.9023, 13.3538, 13.6441, 15.9665, 16.2568, 17.418, 17.9986, 18.5792, 19.1598, 20.9016, 21.1919, 21.4822, 21.7725),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [0],
+"method": &"AW"
+}, {
+"args": [1],
+"method": &"AW"
+}, {
+"args": [2],
+"method": &"AW"
+}, {
+"args": [3],
+"method": &"AW"
+}, {
+"args": [0],
+"method": &"AW"
+}, {
+"args": [0],
+"method": &"AW"
+}, {
+"args": [1],
+"method": &"AW"
+}, {
+"args": [1],
+"method": &"AW"
+}, {
+"args": [2],
+"method": &"AW"
+}, {
+"args": [2],
+"method": &"AW"
+}, {
+"args": [3],
+"method": &"AW"
+}, {
+"args": [3],
+"method": &"AW"
+}, {
+"args": [3],
+"method": &"AW"
+}, {
+"args": [2],
+"method": &"AW"
+}, {
+"args": [1],
+"method": &"AW"
+}, {
+"args": [0],
+"method": &"AW"
+}, {
+"args": [3],
+"method": &"AW"
+}, {
+"args": [2],
+"method": &"AW"
+}, {
+"args": [1],
+"method": &"AW"
+}, {
+"args": [0],
+"method": &"AW"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AreaTutorial")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(24.9658),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["new_animation"],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nqsrj"]
+_data = {
+"new_animation": SubResource("Animation_k5odl")
+}
+
+[sub_resource type="Animation" id="Animation_76sh4"]
+resource_name = "new_animation"
+length = 16.0
+step = 0.5805
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TelegraphAttacks")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.644, 8.127, 11.61, 12.771),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [0],
+"method": &"AW"
+}, {
+"args": [1],
+"method": &"AW"
+}, {
+"args": [3],
+"method": &"AW"
+}, {
+"args": [4],
+"method": &"AW"
+}, {
+"args": [2],
+"method": &"AW"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CannonContainer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(7.5465),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [3],
+"method": &"AW"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_00fui"]
+_data = {
+"new_animation": SubResource("Animation_76sh4")
+}
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource("1_j5o2k")
+
+[node name="Tutorialbg" type="Sprite2D" parent="."]
+position = Vector2(986, 546)
+scale = Vector2(0.675659, 0.675659)
+texture = ExtResource("2_j7cod")
+
+[node name="controllsThign" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ox3mh")
+}
+
+[node name="CannonTutorial" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nqsrj")
+}
+
+[node name="AreaTutorial" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_00fui")
+}
+autoplay = "new_animation"
+
+[node name="Character" parent="." instance=ExtResource("2_m1gfm")]
+position = Vector2(950, 504)
+
+[node name="DumbCannons" type="Node2D" parent="."]
+visible = false
+script = ExtResource("3_lltr5")
+
+[node name="Cannon" parent="DumbCannons" instance=ExtResource("4_7m6wa")]
+position = Vector2(-119, 640)
+ammo = ExtResource("5_t0ocl")
+forceMult = 100.0
+
+[node name="Aim" type="Node2D" parent="DumbCannons/Cannon"]
+position = Vector2(791, -226)
+
+[node name="Cannon2" parent="DumbCannons" instance=ExtResource("4_7m6wa")]
+position = Vector2(2103, 635)
+ammo = ExtResource("5_t0ocl")
+forceMult = 100.0
+
+[node name="Aim" type="Node2D" parent="DumbCannons/Cannon2"]
+position = Vector2(-627, -225)
+
+[node name="CannonContainer" type="Node2D" parent="."]
+position = Vector2(0, 11)
+script = ExtResource("3_lltr5")
+
+[node name="Cannon" parent="CannonContainer" instance=ExtResource("4_7m6wa")]
+position = Vector2(1953, 626)
+ammo = ExtResource("5_t0ocl")
+forceMult = 100.0
+
+[node name="Aim" type="Node2D" parent="CannonContainer/Cannon"]
+position = Vector2(-491, -610)
+
+[node name="Cannon2" parent="CannonContainer" instance=ExtResource("4_7m6wa")]
+position = Vector2(308, 1096)
+ammo = ExtResource("5_t0ocl")
+forceMult = 100.0
+
+[node name="Aim" type="Node2D" parent="CannonContainer/Cannon2"]
+position = Vector2(329, -915)
+
+[node name="Cannon3" parent="CannonContainer" instance=ExtResource("4_7m6wa")]
+position = Vector2(1658, 1105)
+ammo = ExtResource("5_t0ocl")
+forceMult = 100.0
+
+[node name="Aim" type="Node2D" parent="CannonContainer/Cannon3"]
+position = Vector2(-100, -873)
+
+[node name="Cannon4" parent="CannonContainer" instance=ExtResource("4_7m6wa")]
+position = Vector2(-571, 1049)
+ammo = ExtResource("5_t0ocl")
+forceMult = 100.0
+
+[node name="Aim" type="Node2D" parent="CannonContainer/Cannon4"]
+position = Vector2(349, -774)
+
+[node name="TelegraphAttacks" type="Node2D" parent="."]
+position = Vector2(0, 11)
+script = ExtResource("3_lltr5")
+
+[node name="TelegraphAttack" parent="TelegraphAttacks" instance=ExtResource("6_lgc31")]
+position = Vector2(629, 686)
+
+[node name="Polygon2D" type="Polygon2D" parent="TelegraphAttacks/TelegraphAttack"]
+polygon = PackedVector2Array(-73, -128, -6, -341, -17, -474, 82, -402, 136, -200, 63, -69, -78, 42, -377, 131, -265, -76)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TelegraphAttacks/TelegraphAttack"]
+polygon = PackedVector2Array(114, -203, 67, -392, 2, -437, 12, -282, -64, -107, -252, -56, -330, 105, -79, 25, 46, -73)
+
+[node name="TelegraphAttack2" parent="TelegraphAttacks" instance=ExtResource("6_lgc31")]
+position = Vector2(1253, 874)
+rotation = 0.401134
+
+[node name="Polygon2D" type="Polygon2D" parent="TelegraphAttacks/TelegraphAttack2"]
+polygon = PackedVector2Array(-53.4326, -177.203, 147.996, -352.792, 398.839, -329.921, 481.258, -179.133, 291.309, -158.312, 79.6782, -63.122, -35.9143, 122.769, -187, 333, -192.746, 101.302)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TelegraphAttacks/TelegraphAttack2"]
+polygon = PackedVector2Array(52.7043, -83.1821, 277.335, -178.455, 436.012, -193.616, 386.534, -305.15, 166.043, -333.291, -33.8774, -174.635, -167.807, 103.759, -171, 297, -71.0089, 132.222)
+
+[node name="TelegraphAttack3" parent="TelegraphAttacks" instance=ExtResource("6_lgc31")]
+position = Vector2(1253, 874)
+rotation = 0.401134
+
+[node name="Polygon2D" type="Polygon2D" parent="TelegraphAttacks/TelegraphAttack3"]
+polygon = PackedVector2Array(-278.939, -268.39, -223.513, -516.746, -120.613, -120.468, 51.3898, -47.8654, 333.4, -107.732, 130.267, 102.253, -38.1527, 194.323, -216.056, -20.2454)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TelegraphAttacks/TelegraphAttack3"]
+polygon = PackedVector2Array(51.1929, -30.4023, -135.984, -118.294, -219.891, -467.23, -266.859, -268.082, -205.65, -29.0038, -30.8417, 170.584, 123.349, 91.0656, 285.388, -85.1965)
+
+[node name="TelegraphAttack4" parent="TelegraphAttacks" instance=ExtResource("6_lgc31")]
+position = Vector2(734, 967)
+
+[node name="Polygon2D" type="Polygon2D" parent="TelegraphAttacks/TelegraphAttack4"]
+polygon = PackedVector2Array(-46, -498, 49, -375, 104, -148, 81, 53, -142, 115, -12, -22, -26, -316, -204, -640)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TelegraphAttacks/TelegraphAttack4"]
+polygon = PackedVector2Array(72, 42, 92, -152, 41, -374, -62, -496, -179, -608, -17, -325, 1, -20, -113, 99)
+
+[node name="Cutscene" parent="." instance=ExtResource("7_ivkss")]
+visible = false
+
+[node name="Cutscene2" type="Sprite2D" parent="Cutscene"]
+visible = false
+position = Vector2(959, 535)
+scale = Vector2(0.956147, 0.956147)
+texture = ExtResource("9_pojck")
+
+[node name="Cutscene6" type="Sprite2D" parent="Cutscene"]
+visible = false
+position = Vector2(958, 548)
+scale = Vector2(1.32842, 1.32842)
+texture = ExtResource("9_pmh77")
+
+[node name="Cutscene5" type="Sprite2D" parent="Cutscene"]
+visible = false
+position = Vector2(959, 557)
+scale = Vector2(1.41342, 1.41342)
+texture = ExtResource("10_uo58o")
+
+[node name="Sound" type="Node2D" parent="."]
+position = Vector2(948, 93)
+script = ExtResource("11_52ls6")
+
+[node name="Ambient" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("12_a1pc0")
+panning_strength = 0.0
+
+[node name="Lighter" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("12_a1pc0")
+panning_strength = 0.0
+
+[node name="Heavier" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("13_cftsj")
+panning_strength = 0.0
+
+[node name="Controls" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(223, 118)
+scale = Vector2(0.400115, 0.400115)
+texture = ExtResource("14_jdiwf")
+
+[connection signal="animation_finished" from="AreaTutorial" to="." method="_on_animation_player_animation_finished"]
+[connection signal="CutsceneComplete" from="Cutscene" to="." method="_handle_cutscene_end"]

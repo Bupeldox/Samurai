@@ -1,16 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://q63rfcg5ifbs"]
+[gd_scene load_steps=16 format=3 uid="uid://q63rfcg5ifbs"]
 
-[ext_resource type="Script" path="res://Scenes/Level1/LevelController.cs" id="1_0enf7"]
+[ext_resource type="Script" path="res://Components/LevelController.cs" id="1_0enf7"]
 [ext_resource type="PackedScene" uid="uid://yg23xjf6tq46" path="res://Components/MathCharacter/MathCharacter.tscn" id="1_kvkux"]
 [ext_resource type="PackedScene" uid="uid://wnqdbc0e7yr5" path="res://Components/Cannon/Cannon.tscn" id="2_x1f6v"]
 [ext_resource type="PackedScene" uid="uid://knuuo4vopqqt" path="res://Components/TelegraphAttack/TelegraphAttack.tscn" id="3_5kq6p"]
-[ext_resource type="Script" path="res://Scenes/Level1/AttackContainer.cs" id="3_msowu"]
+[ext_resource type="Script" path="res://Components/AttackContainer.cs" id="3_s5cx6"]
 [ext_resource type="PackedScene" uid="uid://wt2rxg5f0vlt" path="res://Components/RigidBodyPickUp/RigidBodyPickUp.tscn" id="4_b2sdg"]
 [ext_resource type="PackedScene" uid="uid://dmusvdcl74m6q" path="res://Components/Cutscene/Cutscene.tscn" id="5_8i6nx"]
 [ext_resource type="Texture2D" uid="uid://bwgo5txiblb84" path="res://Assets/Cutscene/Cutscene3.png" id="6_2ao5a"]
 [ext_resource type="Texture2D" uid="uid://blq5eedddlpe8" path="res://Assets/Cutscene/Cutscene2.png" id="7_1757p"]
 [ext_resource type="Texture2D" uid="uid://cgsl7dsywkya1" path="res://Assets/Cutscene/Cutscene.png" id="8_v1ne2"]
 [ext_resource type="AudioStream" uid="uid://bmt4m4ba1cvbt" path="res://Assets/Sound/Heavier.mp3" id="11_f3vwt"]
+[ext_resource type="Script" path="res://Components/SoundController.cs" id="11_k2aqg"]
 [ext_resource type="AudioStream" uid="uid://ql3y4qm43vu4" path="res://Assets/Sound/Lighter.mp3" id="12_hbbib"]
 
 [sub_resource type="Animation" id="Animation_uc5px"]
@@ -79,7 +80,7 @@ autoplay = "new_animation"
 position = Vector2(950, 493)
 
 [node name="CannonContainer" type="Node2D" parent="."]
-script = ExtResource("3_msowu")
+script = ExtResource("3_s5cx6")
 
 [node name="Cannon" parent="CannonContainer" instance=ExtResource("2_x1f6v")]
 position = Vector2(641, 1159)
@@ -106,7 +107,7 @@ forceMult = 100.0
 position = Vector2(-144, -962)
 
 [node name="CannonContainer" type="Node2D" parent="CannonContainer"]
-script = ExtResource("3_msowu")
+script = ExtResource("3_s5cx6")
 
 [node name="Cannon" parent="CannonContainer/CannonContainer" instance=ExtResource("2_x1f6v")]
 position = Vector2(641, 1159)
@@ -133,7 +134,7 @@ forceMult = 100.0
 position = Vector2(-144, -962)
 
 [node name="TelegraphAttacks" type="Node2D" parent="."]
-script = ExtResource("3_msowu")
+script = ExtResource("3_s5cx6")
 
 [node name="TelegraphAttack" parent="TelegraphAttacks" instance=ExtResource("3_5kq6p")]
 position = Vector2(629, 686)
@@ -176,6 +177,11 @@ texture = ExtResource("8_v1ne2")
 
 [node name="Sound" type="Node2D" parent="."]
 position = Vector2(948, 93)
+script = ExtResource("11_k2aqg")
+
+[node name="Ambient" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("12_hbbib")
+panning_strength = 0.0
 
 [node name="Lighter" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("12_hbbib")

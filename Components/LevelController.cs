@@ -3,8 +3,8 @@ using System;
 
 public partial class LevelController : Node
 {
-	[Signal]
-	public delegate void LevelEndEventHandler();
+	public main mainNode{get;set;}
+	
 
 	AnimationPlayer animationPlayer;
 	Cutscene cutscene;
@@ -17,7 +17,7 @@ public partial class LevelController : Node
 	}
 
 	public void _handle_cutscene_end(){
-		EmitSignal(SignalName.LevelEnd,null);
+		mainNode?.OnLevelEnd();
 	}
 	public void _on_animation_player_animation_finished(string animName){
 		GD.Print("animationEnd");
