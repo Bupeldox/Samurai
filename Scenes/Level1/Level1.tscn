@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://q63rfcg5ifbs"]
+[gd_scene load_steps=15 format=3 uid="uid://q63rfcg5ifbs"]
 
 [ext_resource type="Script" path="res://Components/LevelController.cs" id="1_0enf7"]
 [ext_resource type="PackedScene" uid="uid://yg23xjf6tq46" path="res://Components/MathCharacter/MathCharacter.tscn" id="1_kvkux"]
@@ -12,9 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://bwgo5txiblb84" path="res://Assets/Cutscene/Cutscene3.png" id="6_2ao5a"]
 [ext_resource type="Texture2D" uid="uid://blq5eedddlpe8" path="res://Assets/Cutscene/Cutscene2.png" id="7_1757p"]
 [ext_resource type="Texture2D" uid="uid://cgsl7dsywkya1" path="res://Assets/Cutscene/Cutscene.png" id="8_v1ne2"]
-[ext_resource type="AudioStream" uid="uid://bmt4m4ba1cvbt" path="res://Assets/Sound/Heavier.mp3" id="11_f3vwt"]
-[ext_resource type="Script" path="res://Components/SoundController.cs" id="11_k2aqg"]
-[ext_resource type="AudioStream" uid="uid://ql3y4qm43vu4" path="res://Assets/Sound/Lighter.mp3" id="12_hbbib"]
 
 [sub_resource type="Animation" id="Animation_uc5px"]
 resource_name = "new_animation"
@@ -189,22 +186,6 @@ texture = ExtResource("7_1757p")
 position = Vector2(961, 539)
 scale = Vector2(1.03152, 1.03152)
 texture = ExtResource("8_v1ne2")
-
-[node name="Sound" type="Node2D" parent="."]
-position = Vector2(948, 93)
-script = ExtResource("11_k2aqg")
-
-[node name="Ambient" type="AudioStreamPlayer2D" parent="Sound"]
-stream = ExtResource("12_hbbib")
-panning_strength = 0.0
-
-[node name="Lighter" type="AudioStreamPlayer2D" parent="Sound"]
-stream = ExtResource("12_hbbib")
-panning_strength = 0.0
-
-[node name="Heavier" type="AudioStreamPlayer2D" parent="Sound"]
-stream = ExtResource("11_f3vwt")
-panning_strength = 0.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="CutsceneComplete" from="Cutscene" to="." method="_handle_cutscene_end"]
